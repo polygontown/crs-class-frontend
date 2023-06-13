@@ -1,5 +1,5 @@
 const env = {
-    SERVER_ADD: "https://crs-server-production.up.railway.app"
+    SERVER_ADD: "http://crsclass.com/v1/api"
 }
 
 export default env;

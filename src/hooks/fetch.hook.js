@@ -2,8 +2,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import ENV from "../config";
 
-axios.defaults.baseURL = ENV.SERVER_ADD;
-
 export function useFetchContent(cname) {
     const [getData,setData] = useState({
         isLoading: false,
@@ -15,7 +13,7 @@ export function useFetchContent(cname) {
         const fetchData = async () => {
             try {
                 setData(prev => ({ ...prev, isLoading: true }));
-                const { data, status } = await axios.get(`/api/get-content?cname=${cname}`);
+                const { data, status } = await axios.get(`${ENV.SERVER_ADD}/api/get-content?cname=${cname}`);
                 if(status === 201) {
                     setData(prev => ({ ...prev, isLoading: false }));
                     setData(prev => ({ ...prev, apiData: data, status: status }));
@@ -45,7 +43,7 @@ export function useFetchUser(query) {
                 if(!token) {
                     setData(prev => ({ ...prev, serverError: true }));
                 }
-                const { data, status } = await axios.get(`/api${query}`,{ headers: { "Authorization": `Beare ${token}`}});
+                const { data, status } = await axios.get(`${ENV.SERVER_ADD}/api${query}`,{ headers: { "Authorization": `Beare ${token}`}});
                 if(status === 201 || status === 200) {
                     setData(prev => ({ ...prev, isLoading: false }));
                     setData(prev => ({ ...prev, apiData: data, status: status }));
@@ -75,7 +73,7 @@ export function useFetchDoc(query) {
                 if(!token) {
                     setData(prev => ({ ...prev, serverError: true }));
                 }
-                const { data, status } = await axios.get(`/api${query}`,{ headers: { "Authorization": `Beare ${token}`}});
+                const { data, status } = await axios.get(`${ENV.SERVER_ADD}/api${query}`,{ headers: { "Authorization": `Beare ${token}`}});
                 if(status === 201) {
                     setData(prev => ({ ...prev, isLoading: false }));
                     setData(prev => ({ ...prev, apiData: data, status: status }));
