@@ -11,6 +11,7 @@ export default function Services(props) {
   const [{ isLoading, apiData }] = useFetchDoc(
     `/get-documents?dname=services&doc=0`
   );
+  // console.log(apiData);
   const navigate = useNavigate();
 
   return (

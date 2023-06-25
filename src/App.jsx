@@ -19,7 +19,7 @@ import Publications from "./components/pages/publications";
 import Careers from "./components/pages/careers";
 import Editor from "./components/pages/docEditor";
 import Admin from "./components/pages/admin";
-import Manage from "./components/pages/manage";
+import Manage from "./components/pages/manage";   
 import Create from "./components/pages/create";
 import View from "./components/pages/view";
 import Contacts from "./components/pages/contacts";
@@ -30,15 +30,15 @@ import { AuthorizeAdmin, Authorize } from "./middleware/auth";
 
 export default function App() {
     const [page, setPage] = useState("main");
-    console.log(page);
     const [scroll, setScroll] = useState(0);
     const type = localStorage.getItem("type");
     let editable = false;
     if(type === "Admin") editable = true;
+    // console.log(window.location);
     const router = createBrowserRouter([
         {
             path: "/",
-            element: <Main setPage={setPage} setScroll={setScroll} editable={editable}/>
+            element: <Main setPage={setPage} setScroll={setScroll} page={page} editable={editable}/>
         },
         {
             path: "/login",
@@ -118,7 +118,7 @@ export default function App() {
         }
     ]);
     useEffect(() => {
-        document.getElementsByClassName("App")[0].scrollTo(0,scroll)
+        document.getElementsByClassName("App")[0].scrollTo(0,scroll);
     });
     return (
         <div className="App">

@@ -1,8 +1,10 @@
 .App {
     height: 100vh;
     width: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     scroll-behavior: smooth;
+    scrollbar-width: 1rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     scroll-snap-type: y mandatory;
 
@@ -28,3 +30,29 @@
         z-index: 0;
   }
 }
+
+.App::-webkit-scrollbar {
+    display: block;
+  }
+.App::-webkit-scrollbar {
+    width: 30px;
+  }
+
+.App::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+    background-color: rgb(165, 165, 165);
+  }
+.App::-webkit-scrollbar-thumb {
+    background: #116; 
+    border-radius: 10px;
+  }
+.App::-webkit-scrollbar-thumb:hover {
+    background: #114; 
+  }
+
+  @media only screen and (max-width: 750px) {
+    .App::-webkit-scrollbar {
+      display: none;
+    }
+  }

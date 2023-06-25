@@ -36,7 +36,7 @@ export default function Contact(props) {
               height: "100%",
             }}
             center={position}
-            zoom={1}
+            zoom={2.6}
             scrollWheelZoom={false}
           >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

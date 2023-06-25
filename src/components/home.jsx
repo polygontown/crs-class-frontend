@@ -7,9 +7,8 @@ import loading from "../assets/loading.gif";
 import { useFetchDoc } from "../hooks/fetch.hook";
 
 export default function Home(props) {
-  const [{ isLoading, apiData }] = useFetchDoc(
-    `/get-documents?image=1&limit=5`
-  );
+  const url = `/get-documents?image=1&limit=5`;
+  const [{ isLoading, apiData }] = useFetchDoc(url);
   useEffect(() => {
     const intarval = setInterval(() => {
       try {
