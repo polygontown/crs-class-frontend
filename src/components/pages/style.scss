@@ -19,9 +19,12 @@
     height: 100%;
     width: 100%;
     padding-top: 5rem;
+    overflow: auto;
     align-items: center;
+    background-color: #ffffff66;
 
     .head {
+        position: absolute;
         display: flex;
         height: 4rem;
         width: 100%;
@@ -43,6 +46,9 @@
         }
     }
 
+    h3 {
+        text-shadow: 0 0 10px white;
+    }
     .page-body {
         display: flex;
         flex-wrap: wrap;
@@ -59,7 +65,7 @@
             height: 18rem;
             aspect-ratio: 1/1;
             border-radius: 1rem;
-            background-color: #ffffffaa;
+            background-color: #ffffffff;
             box-shadow: 0 0 10px black;
             
             .image-container {
@@ -748,6 +754,55 @@
     width: 100%;
     padding: 1rem;
 
+    .folder-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        padding: 1rem;
+        gap: 1rem;
+        border-radius: 1rem;
+        overflow: auto;
+        box-shadow: 0 0 10px black inset;
+
+        .folder-headding {
+            display: flex;
+            flex-direction: row;
+            height: 3rem;
+            width: 100%;
+            padding-inline: 1rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 10px black;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .folders {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            width: 100%;
+            gap: 1rem;
+            align-items: flex-start;
+
+            .folder {
+                flex: 1;
+                max-width: 15rem;
+                aspect-ratio: 1/1;
+                border-radius: 1rem;
+                box-shadow: 0 0 10px black;
+
+                .folder-name {
+                    display: flex;
+                    height: 20%;
+                    width: 100%;
+                    align-items: flex-start;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
     .upload-document-body {
         height: 100%;
         width: 100%;
@@ -769,7 +824,23 @@
                 display: flex;
                 height: 100%;
                 width: 50%;
+                gap: 1rem;
                 align-items: center;
+
+                .button {
+                    display: flex;
+                    height: 65%;
+                    width: 5rem;
+                    border-radius: 0.5rem;
+                    border: none;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 0 10px black inset;
+                }
+
+                .button:hover {
+                    box-shadow: 0 0 10px black;
+                }
             }
 
             .top-right {

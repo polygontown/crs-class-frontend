@@ -111,7 +111,7 @@ function setCache(key, value) {
             .then(cache => {
                 cache.put(req, res)
                     .then(function () {
-                        console.log('Response cached:');
+                        // console.log('Response cached:');
                     })
                     .catch(function (error) {
                         console.error('Error storing request and response in cache:', error);
@@ -125,7 +125,6 @@ function setCache(key, value) {
 
 function getCache(key, setRes) {
     let req = new Request(key);
-    console.log(window);
     if ("caches" in window) {
         caches.open("crsclass")
             .then(cache => {

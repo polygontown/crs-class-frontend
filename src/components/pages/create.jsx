@@ -65,7 +65,7 @@ export default function Create(props) {
       toast.promise(createPromise, {
         loading: `${stat}ing...`,
         success: <b>{stat}ed successfully...!</b>,
-        errror: <b>Could not {stat}!</b>,
+        error: <b>Could not {stat}!</b>,
       });
       createPromise.then(() => {
         navigate(`/manage/${create}`, { replace: true });

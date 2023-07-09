@@ -55,7 +55,7 @@ export default function Publications(props) {
                 <img src={item.image} alt="cover" />
               </div>
               <div className="description-container">
-                <h3>{item.title}</h3>
+                <h3>{item.title.includes("Circulars") ? item.title.split("Circulars" + ":") : item.title.split("Quality manuals" + ":")}</h3>
                 <p>{item.date}</p>
                 <div className="button-container">
                   <button onClick={() => setDownloadPopup(item)}>

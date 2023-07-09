@@ -69,16 +69,19 @@ export default function Publications(props) {
               <ArrowBackIcon sx={{ fontSize: "1rem" }} />
               {"back"}
             </div>
-            <h2>All publications</h2>
+            {/* <h2>All publications</h2> */}
           </div>
-          <div className="page-body">
-            {data?.map((item, index) => (
+          <h3>Circulars</h3>
+          <div className="page-body circulars">
+            {data?.map((item, index) => {
+              if(!item.title?.includes("Circulars:")) return;
+              return(
               <div key={index} className="box">
                 <div className="image-container">
                   <img src={item.image} alt="cover" />
                 </div>
                 <div className="description">
-                  <h3>{item.title.length < 40 ? item.title : `${item.title.substring(0,40)}...`}</h3>
+                  <h3>{item.title?.split("Circulars:")[1].length < 40 ? item.title?.split("Circulars:")[1] : `${item.title?.split("Circulars:")[1].substring(0,40)}...`}</h3>
                   <p>{item.date}</p>
                   <div className="link">
                     <button onClick={() => setDownloadPopup(item)}>
@@ -87,7 +90,28 @@ export default function Publications(props) {
                   </div>
                 </div>
               </div>
-            ))}
+            )})}
+          </div>
+          <h3>Quality manuals</h3>
+          <div className="page-body quality-certificates">
+          {data?.map((item, index) => {
+              if(!item.title?.includes("Quality manuals:")) return;
+              return(
+              <div key={index} className="box">
+                <div className="image-container">
+                  <img src={item.image} alt="cover" />
+                </div>
+                <div className="description">
+                  <h3>{item.title?.split("Quality manuals:")[1].length < 40 ? item.title?.split("Quality manuals:")[1] : `${item.title?.split("Quality manuals:")[1].substring(0,40)}...`}</h3>
+                  <p>{item.date}</p>
+                  <div className="link">
+                    <button onClick={() => setDownloadPopup(item)}>
+                      Download <DownloadIcon />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )})}
           </div>
         </div>
       )}

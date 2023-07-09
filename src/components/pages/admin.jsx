@@ -19,6 +19,7 @@ import UploadIcon from "@mui/icons-material/Upload";
 import SortIcon from "@mui/icons-material/Sort";
 import FileDownload from "@mui/icons-material/Download";
 import KeyIcon from "@mui/icons-material/Key";
+import FolderIcon from '@mui/icons-material/Folder';
 
 import "./style.scss";
 import logo from "../../assets/logo.svg";
@@ -89,7 +90,7 @@ export default function Admin(props) {
       <div className="admin-panel">
         <div className="menu-bar">
           <div className="logo">
-            <img src={logo} alt="logo" style={{ backgroundColor: "white" }}/>
+            <img src={logo} alt="logo" style={{ backgroundColor: "white" }} />
             <div className="headding">
               <span>CAPITAL REGISTER OF</span>
               <span id="bold">SHIPPING</span>
@@ -603,6 +604,7 @@ const UploadDocument = (props) => {
   const [editPopup, setEditPopup] = useState(false);
   const [deletePopup, setDeletePopup] = useState(false);
   const [downloadPopup, setDownloadPoopup] = useState(false);
+  const [folder, setFolder] = useState("folder");
   const style = {
     position: "absolute",
     borderRadius: "1rem",
@@ -623,114 +625,139 @@ const UploadDocument = (props) => {
 
   return (
     <div className="upload-document-container">
-      <div className="upload-document-body">
-        <div className="top">
-          <div className="top-left">
-            <h3>{`${documents?.length} documents`}</h3>
+      {folder === "folder" ? (<div className="folder-container">
+        <div className="folder-headding">Upload documents</div>
+        <div className="folders">
+          <div className="folder" onClick={() => setFolder("Circulars")}>
+            <FolderIcon sx={{
+              height: "80%",
+              width: "100%"
+            }} />
+            <div className="folder-name">Circulars</div>
           </div>
-          <div className="top-right">
-            <Popup
-              className="upload-popup"
-              style={style}
-              visible={visible}
-              onClose={() => setVisible(false)}
-              animationDuration="200"
-            >
-              <DocumentUploader setVisible={setVisible} new={true} />
-            </Popup>
-
-            <Popup
-              className="upload-popup"
-              style={{ ...style, height: "25rem" }}
-              visible={infoPopup}
-              onClose={() => setInfoPopup(false)}
-              animationDuration="200"
-            >
-              <DocumentInfo setVisible={setInfoPopup} info={infoPopup} />
-            </Popup>
-
-            <Popup
-              className="upload-popup"
-              style={style}
-              visible={editPopup}
-              onClose={() => setEditPopup(false)}
-              animationDuration="200"
-            >
-              <DocumentUploader
-                setVisible={setEditPopup}
-                new={false}
-                info={editPopup}
-              />
-            </Popup>
-
-            <Popup
-              className="upload-popup"
-              style={{ ...style, height: "12rem" }}
-              visible={deletePopup}
-              onClose={() => setDeletePopup(false)}
-              animationDuration="200"
-            >
-              <DocumentDelete
-                setVisible={setDeletePopup}
-                new={false}
-                info={deletePopup}
-              />
-            </Popup>
-
-            <Popup
-              className="upload-popup"
-              style={{ ...style, height: "12rem" }}
-              visible={downloadPopup}
-              onClose={() => setDownloadPoopup(false)}
-              animationDuration="200"
-            >
-              <DocumentDownload
-                setVisible={setDownloadPoopup}
-                new={false}
-                info={downloadPopup}
-              />
-            </Popup>
-
-            <button onClick={() => setVisible(true)} className="button upload">
-              Upload
-              <UploadIcon />
-            </button>
-            <button className="button sort">
-              Sort
-              <SortIcon />
-            </button>
+          <div className="folder" onClick={() => setFolder("Quality manuals")}>
+            <FolderIcon sx={{
+              height: "80%",
+              width: "100%"
+            }} />
+            <div className="folder-name">Quality manuals</div>
           </div>
         </div>
-        <div className="bottom">
-          {documents?.map((doc, index) => (
-            <div key={index} className="document">
-              <div className="cover">
-                <img src={doc.image || docImg} alt="" />
-              </div>
-              <div className="description">
-                <div className="des-left">
-                  <p id="title">{doc.title}</p>
-                  <p id="date">{doc.date}</p>
-                </div>
-                <div className="des-right">
-                  <span onClick={() => Info(doc)}>
-                    <InfoIcon />
-                  </span>
-                  <span onClick={() => Edit(doc)}>
-                    <EditIcon />
-                  </span>
-                  <span onClick={() => Delete(doc)}>
-                    <DeleteIcon />
-                  </span>
-                  <span onClick={() => Download(doc)}>
-                    <FileDownload />
-                  </span>
-                </div>
-              </div>
+      </div>) :
+        (<div className="upload-document-body">
+          <div className="top">
+            <div className="top-left">
+              <button className="button" onClick={() => setFolder("folder")}><ArrowBackIcon />Back</button>
+              <h3>{`${folder}`}</h3>
             </div>
-          ))}
-        </div>
-      </div>
+            <div className="top-right">
+              <Popup
+                className="upload-popup"
+                style={style}
+                visible={visible}
+                onClose={() => setVisible(false)}
+                animationDuration="200"
+              >
+                <DocumentUploader setVisible={setVisible} new={true} folder={folder} />
+              </Popup>
+
+              <Popup
+                className="upload-popup"
+                style={{ ...style, height: "25rem" }}
+                visible={infoPopup}
+                onClose={() => setInfoPopup(false)}
+                animationDuration="200"
+              >
+                <DocumentInfo setVisible={setInfoPopup} info={infoPopup} folder={folder} />
+              </Popup>
+
+              <Popup
+                className="upload-popup"
+                style={style}
+                visible={editPopup}
+                onClose={() => setEditPopup(false)}
+                animationDuration="200"
+              >
+                <DocumentUploader
+                  folder={folder}
+                  setVisible={setEditPopup}
+                  new={false}
+                  info={editPopup}
+                />
+              </Popup>
+
+              <Popup
+                className="upload-popup"
+                style={{ ...style, height: "12rem" }}
+                visible={deletePopup}
+                onClose={() => setDeletePopup(false)}
+                animationDuration="200"
+              >
+                <DocumentDelete
+                  folder={folder}
+                  setVisible={setDeletePopup}
+                  new={false}
+                  info={deletePopup}
+                />
+              </Popup>
+
+              <Popup
+                className="upload-popup"
+                style={{ ...style, height: "12rem" }}
+                visible={downloadPopup}
+                onClose={() => setDownloadPoopup(false)}
+                animationDuration="200"
+              >
+                <DocumentDownload
+                  folder={folder}
+                  setVisible={setDownloadPoopup}
+                  new={false}
+                  info={downloadPopup}
+                />
+              </Popup>
+
+              <button onClick={() => setVisible(true)} className="button upload">
+                Upload
+                <UploadIcon />
+              </button>
+              <button className="button sort">
+                Sort
+                <SortIcon />
+              </button>
+            </div>
+          </div>
+          <div className="bottom">
+            {documents?.map((doc, index) => {
+              if(!doc.title.includes(folder+":")) return;
+              return(
+              <div key={index} className="document">
+                <div className="cover">
+                  <img src={doc.image || docImg} alt="" />
+                </div>
+                <div className="description">
+                  <div className="des-left">
+                    <p id="title">{doc.title.split(folder + ":")[1]}</p>
+                    <p id="date">{doc.date}</p>
+                  </div>
+                  <div className="des-right">
+                    <span onClick={() => Info(doc)}>
+                      <InfoIcon />
+                    </span>
+                    <span onClick={() => Edit(doc)}>
+                      <EditIcon />
+                    </span>
+                    <span onClick={() => Delete(doc)}>
+                      <DeleteIcon />
+                    </span>
+                    <span onClick={() => Download(doc)}>
+                      <FileDownload />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )})}
+          </div>
+        </div>)}
     </div>
   );
 };
@@ -811,7 +838,7 @@ const EditWebsite = (props) => {
         <div className="inner">
           <h2>EDIT ABOUT</h2>
           <form onSubmit={submitHandler}>
-            <label htmlFor="about-image" id="ll" style={{ display: "none"}}>
+            <label htmlFor="about-image" id="ll" style={{ display: "none" }}>
               <img
                 src={img || (abtImg && abtImg[0]?.apiData?.content) || logo}
                 alt=""
@@ -858,7 +885,7 @@ const DocumentInfo = (props) => {
           />
         </p>
         <p>
-          <b>Title:</b> {props.info.title}
+          <b>Title:</b> {props.info.title?.split(props.folder + ":")[1]}
         </p>
         <p>
           <b>Date:</b> {props.info.date}
@@ -909,7 +936,7 @@ const DocumentDelete = (props) => {
             justifyContent: "center",
           }}
         >
-          Are you sure you want to delete {props?.info?.title} ?
+          Are you sure you want to delete {props?.info?.title?.split(props.folder + ":")} ?
         </div>
         <div
           className="delete-buttons"
@@ -964,7 +991,7 @@ const DocumentUploader = (props) => {
 
   const formik = useFormik({
     initialValues: {
-      title: title || props?.info?.title || "",
+      title: title || props?.info?.title?.split(props.folder + ":")[1] || "",
     },
     enableReinitialize: true,
     validate: documentFileValidate,
@@ -972,7 +999,8 @@ const DocumentUploader = (props) => {
     validateOnChange: false,
     onSubmit: async (values) => {
       let Private = document.getElementById("document-privacy").checked;
-      values = await Object.assign(values, {
+      values = Object.assign(values, {
+        title: props.folder + ":" + values.title,
         did: did,
         dname: "files",
         date: date,
@@ -1022,7 +1050,7 @@ const DocumentUploader = (props) => {
     const e = document.getElementById("document-file");
     if (!props.new && !e.files[0]) {
       document.getElementById("document-label-div").innerHTML =
-        props?.info?.title;
+        props?.info?.title?.split(props.folder + ":")[1];
       document.getElementById("document-label-div").style.color = "#000";
     }
     if (!props.new) {
@@ -1129,7 +1157,7 @@ const DocumentDownload = (props) => {
             justifyContent: "center",
           }}
         >
-          Are you sure you want to download {props?.info?.title} ?
+          Are you sure you want to download {props?.info?.title?.split(props.folder + ":")} ?
         </div>
         <div
           className="delete-buttons"
