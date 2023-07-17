@@ -728,7 +728,7 @@ const UploadDocument = (props) => {
           </div>
           <div className="bottom">
             {documents?.map((doc, index) => {
-              if(!doc.title.includes(folder+":")) return;
+              if(!doc.title.includes(folder+":")) return null;
               return(
               <div key={index} className="document">
                 <div className="cover">

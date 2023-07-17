@@ -16,7 +16,7 @@ export default function Contact(props) {
       item.document.split(";lat:")[1].split(";lon:")[0],
       item.document.split(";lon:")[1].split(";")[0],
     ],
-    add: item.document.split("add:")[1].split(";ph")[0]
+    add: item.title //document.split("add:")[1].split(";ph")[0]
   }));
   }
   const position = [20, 20];

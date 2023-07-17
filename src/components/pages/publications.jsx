@@ -74,7 +74,7 @@ export default function Publications(props) {
           <h3>Circulars</h3>
           <div className="page-body circulars">
             {data?.map((item, index) => {
-              if(!item.title?.includes("Circulars:")) return;
+              if(!item.title?.includes("Circulars:")) return null;
               return(
               <div key={index} className="box">
                 <div className="image-container">
@@ -95,7 +95,7 @@ export default function Publications(props) {
           <h3>Quality manuals</h3>
           <div className="page-body quality-certificates">
           {data?.map((item, index) => {
-              if(!item.title?.includes("Quality manuals:")) return;
+              if(!item.title?.includes("Quality manuals:")) return null;
               return(
               <div key={index} className="box">
                 <div className="image-container">
