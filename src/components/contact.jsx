@@ -36,14 +36,14 @@ export default function Contact(props) {
       <div className="map">
         <div className="map-container">
           <MapContainer
-            sx={{
-              height: "100%",
-            }}
             center={position}
             zoom={2.6}
             scrollWheelZoom={false}
           >
-            <TileLayer url="http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png" />
+            <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
+             />
             {poses?.map((position, index) => (
               <Marker key={index} position={position.pos}>
                 <Popup>
