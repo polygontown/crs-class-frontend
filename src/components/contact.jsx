@@ -12,13 +12,17 @@ export default function Contact(props) {
   const [{ apiData }] = useFetchDoc("/get-documents?dname=contacts");
   let poses = [];
   if (apiData) {
-    poses = apiData?.map((item) => ({pos: [
-      item.document.split(";lat:")[1].split(";lon:")[0],
-      item.document.split(";lon:")[1].split(";")[0],
-    ],
-    add: item.title //document.split("add:")[1].split(";ph")[0]
-  }));
+    poses = apiData?.map((item) => ({
+      pos: [
+        item.document.split(";lat:")[1].split(";lon:")[0],
+        item.document.split(";lon:")[1].split(";")[0],
+      ],
+      phone: item.document.split(";ph:")[1].split(";mail:")[0],
+      email: item.document.split(";mail:")[1].split(";lat:")[0],
+      add: item.title //document.split("add:")[1].split(";ph")[0]
+    }));
   }
+  console.log(poses);
   const position = [20, 20];
   let DefaultIcon = L.icon({
     iconUrl: icon,
@@ -39,18 +43,32 @@ export default function Contact(props) {
             zoom={2.6}
             scrollWheelZoom={false}
           >
-            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            <TileLayer url="http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png" />
             {poses?.map((position, index) => (
               <Marker key={index} position={position.pos}>
                 <Popup>
-                  {position.add}
+                  <h4 style={{ textDecoration: "underline" }}>
+                    {position.add}
+                  </h4>
+                  <div className="ph crd">
+                    <h6>Phone: </h6>
+                    <a href={`tel:${position.phone}`} target="_blank" rel="noreferrer">
+                      {position.phone}
+                    </a>
+                  </div>
+                  <div className="mail crd">
+                    <h6>Email: </h6>
+                    <a href={`mailto:${position.email}`} target="_blank" rel="noreferrer">
+                      {position.email}
+                    </a>
+                  </div>
                 </Popup>
               </Marker>
             ))}
           </MapContainer>
         </div>
       </div>
-      <div className="adds">
+      {/* <div className="adds">
         {apiData?.map((item, index) => (
           <div key={index} className="add-container">
             <h5 className="title">
@@ -83,29 +101,12 @@ export default function Contact(props) {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
 
-// {
-//     title: "Corporate Head Quarters",
-//     subtitle: "Place name1",
-//     address: "25807 Westheimer Parkway, Suite # 433, Katy, TX 77494 USA.",
-//     phone: "+1 (346) 348 1363",
-//     email: "info@crsclass.com"
-// },
-// {
-//     title: "Regional Centre Indian Ocean",
-//     subtitle: "Place name2",
-//     address: "1st 5A, Heavenly Plaza, CiviRd, Chembumukku, EdappaKakkanad, Kerala 682021",
-//     phone: "0484 3500685",
-//     email: "info@crsclass.com"
-// },
-// {
-//     title: "Corporate Head Quarters",
-//     subtitle: "Place name3",
-//     address: "India Seaport Airport Road, kalamassery, kochi, kerala, India",
-//     phone: "+91 6282443764",
-//     email: "vishnuur@techbyheart.in"
-// }
+
+//
+
+//https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
