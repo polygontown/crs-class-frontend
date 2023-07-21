@@ -1,5 +1,5 @@
 import React from "react";
-import L from "leaflet";
+// import L from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import icon from "leaflet/dist/images/marker-icon.png";
@@ -22,14 +22,14 @@ export default function Contact(props) {
       add: item.title //document.split("add:")[1].split(";ph")[0]
     }));
   }
-  console.log(poses);
+  // console.log(poses);
   const position = [20, 20];
-  let DefaultIcon = L.icon({
-    iconUrl: icon,
-    shadowUrl: iconShadow,
-  });
+  // let DefaultIcon = L.icon({
+  //   iconUrl: icon,
+  //   shadowUrl: iconShadow,
+  // });
 
-  L.Marker.prototype.options.icon = DefaultIcon;
+  // L.Marker.prototype.options.icon = DefaultIcon;
   return (
     <div className="contact">
       <h1>CONTACT US</h1>
@@ -45,7 +45,7 @@ export default function Contact(props) {
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
              />
             {poses?.map((position, index) => (
-              <Marker key={index} position={position.pos}>
+              <Marker key={index} position={[9.648073,76.322920]}>
                 <Popup>
                   <h4 style={{ textDecoration: "underline" }}>
                     {position.add}
