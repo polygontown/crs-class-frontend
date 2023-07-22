@@ -10,6 +10,7 @@ export default function Home(props) {
   const url = `/get-documents?image=1&limit=5`;
   const [{ isLoading, apiData }] = useFetchDoc(url);
   useEffect(() => {
+    document.getElementsByClassName("App")[0].classList.add("App-scrl");
     const intarval = setInterval(() => {
       try {
         if (!isLoading && apiData) {

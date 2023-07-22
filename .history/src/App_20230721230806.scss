@@ -1,9 +1,10 @@
 .App {
     height: 100vh;
     width: 100%;
+    overflow-y: scroll;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    // scrollbar-width: 0.5rem;
+    scrollbar-width: 1rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     scroll-snap-type: y mandatory;
 
@@ -29,16 +30,12 @@
         z-index: 0;
   }
 }
-.App-scrl {
-  overflow-y: scroll;
 
-}
-
-.App-scrl::-webkit-scrollbar {
+.App::-webkit-scrollbar {
     display: block;
   }
 .App::-webkit-scrollbar {
-    width: 20px;
+    width: 30px;
   }
 
 .App::-webkit-scrollbar-track {

@@ -12,7 +12,6 @@ import Publication from "./components/publications";
 import Career from "./components/career";
 import Contact from  "./components/contact";
 import Login from "./components/login";
-import Test from "./components/test";
 
 import Services from "./components/pages/services";
 import Blogs from "./components/pages/blogs";
@@ -37,10 +36,6 @@ export default function App() {
     if(type === "Admin") editable = true;
     // console.log(window.location);
     const router = createBrowserRouter([
-        {
-            path: "test",
-            element: <Test />
-        },
         {
             path: "/",
             element: <Main setPage={setPage} setScroll={setScroll} page={page} editable={editable}/>

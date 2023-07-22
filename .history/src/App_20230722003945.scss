@@ -1,6 +1,7 @@
 .App {
     height: 100vh;
     width: 100%;
+    overflow-y: scroll;
     overflow-x: hidden;
     scroll-behavior: smooth;
     // scrollbar-width: 0.5rem;
@@ -29,12 +30,8 @@
         z-index: 0;
   }
 }
-.App-scrl {
-  overflow-y: scroll;
 
-}
-
-.App-scrl::-webkit-scrollbar {
+.App::-webkit-scrollbar {
     display: block;
   }
 .App::-webkit-scrollbar {

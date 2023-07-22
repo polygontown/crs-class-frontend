@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +20,9 @@ export default function View(props) {
     if (props.all) return navigate(`/${type}`);
     return navigate(`/manage/${type}`, { replace: true });
   };
+  useEffect(() => {
+    document.getElementsByClassName("App")[0].classList.remove("App-scrl");
+  });
   return (
     <>
       <button onClick={backButton} className="universal-back-button">

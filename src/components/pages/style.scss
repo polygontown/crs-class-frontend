@@ -1436,7 +1436,9 @@
         height: 100%;
         width: 100%;
         border-radius: 1rem;
-        overflow: scroll;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
         align-items: center;
         box-shadow: 0 0 10px black inset;
 
@@ -1463,6 +1465,25 @@
             }
         }
     }
+    .assets-view-body::-webkit-scrollbar {
+        display: block;
+      }
+    .assets-view-body::-webkit-scrollbar {
+        width: 20px;
+      }
+    
+    .assets-view-body::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey; 
+        border-radius: 10px;
+        background-color: rgb(165, 165, 165);
+      }
+    .assets-view-body::-webkit-scrollbar-thumb {
+        background: #116; 
+        border-radius: 10px;
+      }
+    .assets-view-body::-webkit-scrollbar-thumb:hover {
+        background: #114; 
+      }
 }
 
 .contact-manager {

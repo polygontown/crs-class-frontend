@@ -473,7 +473,7 @@
 
       .blog-description-container {
         position: absolute;
-        height: 50%;
+        height: 40%;
         width: 100%;
         bottom: 0;
         left: 0;
@@ -481,9 +481,12 @@
         border-radius: 1rem;
 
         .one {
-          height: 50%;
+          height: 60%;
           width: 100%;
-          text-shadow: 0 0 10px white;
+          color: white;
+          font-size: 1.3rem;
+          font-weight: bold;
+          text-shadow: 0 0 20px black;
         }
 
         .two {
