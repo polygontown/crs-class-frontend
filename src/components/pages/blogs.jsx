@@ -33,7 +33,7 @@ export default function Blogs(props) {
             </div>
             <h2>ALL BLOGS</h2>
           </div>
-          <div className="page-body">
+          <div className="page-body" style={{ paddingTop: "5rem"}}>
             {apiData?.map((item, index) => (
               <div key={index} className="box">
                 <div className="image-container">
