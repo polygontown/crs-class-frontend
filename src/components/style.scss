@@ -166,7 +166,8 @@
           font-family: AgencyB;
         }
       }
-      .headding > * {
+
+      .headding>* {
         font-family: AgencyR;
       }
     }
@@ -273,9 +274,11 @@
     bottom: 0;
     // background-color: rgba(255, 255, 255, 0.6);
     align-items: center;
+
     a {
       height: 4rem;
       width: 35%;
+
       button {
         height: 4rem;
         width: 100%;
@@ -283,6 +286,7 @@
         box-shadow: 1px 1px 2px 1px #000;
       }
     }
+
     .buttons-container {
       display: flex;
       flex-direction: row;
@@ -291,12 +295,13 @@
       align-items: center;
       justify-content: space-evenly;
     }
+
     .s-media {
       display: flex;
       width: 100%;
       padding: 1rem;
       justify-content: flex-end;
-      
+
       a {
         width: fit-content;
       }
@@ -316,6 +321,7 @@
   color: white;
   justify-content: center;
   align-items: center;
+
   .righ {
     display: flex;
     flex-direction: column;
@@ -536,51 +542,61 @@
 
   .pub-body {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: 80%;
-    width: 60%;
-    gap: 4%;
+    width: 100%;
+    gap: 2rem;
+    padding-inline: 2rem;
     align-items: center;
 
-    .pub {
+    .aside {
       display: flex;
-      height: 20%;
-      width: 100%;
-      border-radius: 1rem;
-      background-color: #ffffffdd;
-      box-shadow: 0 0 10px black;
+      flex-direction: column;
+      height: 100%;
+      width: 50%;
+      align-items: center;
+      justify-content: space-around;
 
-      .image-container {
-        height: 100%;
-        aspect-ratio: 1/1;
+      .pub {
+        display: flex;
+        height: 20%;
+        width: 100%;
         border-radius: 1rem;
+        background-color: #ffffffdd;
+        box-shadow: 0 0 10px black;
 
-        img {
+        .image-container {
+          height: 100%;
+          aspect-ratio: 1/1;
+          border-radius: 1rem;
+
+          img {
+            height: 100%;
+            width: 100%;
+            border-radius: 1rem 0 0 1rem;
+          }
+        }
+
+        .description-container {
+          display: flex;
+          flex-direction: column;
           height: 100%;
           width: 100%;
-          border-radius: 1rem 0 0 1rem;
-        }
-      }
+          justify-content: space-evenly;
 
-      .description-container {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        width: 100%;
-        justify-content: space-evenly;
-
-        .button-container {
-          display: flex;
-          width: 90%;
-          justify-content: flex-end;
+          .button-container {
+            display: flex;
+            width: 90%;
+            justify-content: flex-end;
+          }
         }
       }
     }
+  }
 
-    button {
-      height: 2rem;
-      width: 4rem;
-    }
+  button {
+    height: 2rem;
+    width: 4rem;
   }
 }
 
@@ -704,9 +720,11 @@
         align-items: center;
         // justify-content: center;
       }
-      .crd > * {
+
+      .crd>* {
         font-size: 0.75rem;
       }
+
       .leaflet-container {
         width: 100%;
         height: 100%;
@@ -732,7 +750,7 @@
     font-size: calc(0.3rem + 1vh);
     overflow: scroll;
     align-items: center;
-   // justify-content: space-around;
+    // justify-content: space-around;
     background-color: #fff3;
 
     .add-container {
@@ -753,7 +771,7 @@
 
       .rest {
         width: 100%;
-        
+
       }
 
       .ph-mail {
@@ -807,6 +825,7 @@
         border: none;
         box-shadow: 0 0 10px black;
       }
+
       input:focus {
         outline: none;
         box-shadow: 0 0 10px blue;
@@ -817,6 +836,7 @@
         width: 100%;
         border-radius: 0.5rem;
       }
+
       button:focus {
         outline: none;
         box-shadow: 0 0 10px blue;
@@ -899,7 +919,7 @@
 
     .cover {
       height: calc(100% - (100vw * (4 / 5)));
-      
+
       .buttons-container {
         flex-direction: column;
       }
@@ -932,7 +952,7 @@
         gap: 0.5rem;
         padding: 0.5rem;
         border-radius: 1rem;
-        
+
         .top {
           height: auto;
           aspect-ratio: 15/7;
@@ -951,8 +971,8 @@
 
       .hor {
         height: calc(25% - 0.25rem);
-       // width: calc(90% - 0.25rem);
-       width: auto;
+        // width: calc(90% - 0.25rem);
+        width: auto;
         aspect-ratio: 15/7;
         border-radius: 0.5rem;
 
@@ -991,7 +1011,18 @@
     }
 
     .pub-body {
+      flex-direction: column;
       width: 95%;
+      
+      .aside {
+        height: 50%;
+        width: 100%;
+        font-size: 0.5rem;
+      }
+    }
+    button {
+      height: 1.5rem;
+      width: 3rem;
     }
   }
 
@@ -1046,7 +1077,7 @@
   .contact {
     .map {
       height: 50%;
-      
+
       .map-container {
         aspect-ratio: 2/3;
       }

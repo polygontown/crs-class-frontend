@@ -53,7 +53,7 @@ export default function App() {
             element: <Blogs setPage={setPage} setScroll={setScroll} editable={editable}/>
         },
         {
-            path: "/publications",
+            path: "/publications/:name",
             element: <Publications setPage={setPage} setScroll={setScroll} editable={editable}/>
         },
         {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DownloadIcon from "@mui/icons-material/Download";
 import CloseIcon from "@mui/icons-material/Close";
@@ -12,6 +12,7 @@ import { useFetchDoc } from "../../hooks/fetch.hook";
 
 export default function Publications(props) {
   const navigate = useNavigate();
+  const { name } = useParams();
   const [downloadPopup, setDownloadPopup] = useState(false);
 
   const docs = useFetchDoc("/get-documents?dname=files&doc=0");
@@ -71,41 +72,36 @@ export default function Publications(props) {
             </div>
             {/* <h2>All publications</h2> */}
           </div>
-          <h3>Circulars</h3>
-          <div className="page-body circulars">
+          <h3>{name.split(":")[0]}</h3>
+          <div className="page-body circulars" style={{ flexDirection: "column", alignItems: "center"}}>
             {data?.map((item, index) => {
-              if(!item.title?.includes("Circulars:")) return null;
+              if(!item.title?.includes(name)) return null;
               return(
-              <div key={index} className="box">
-                <div className="image-container">
+              <div key={index} className="box pub-box" style={{
+                display: "flex",
+                flexDirection: "row",
+                height: "8rem",
+                }}>
+                <div className="image-container" style={{
+                  height: "100%",
+                  width: "40%"
+                }}>
                   <img src={item.image} alt="cover" />
                 </div>
-                <div className="description">
-                  <h3>{item.title?.split("Circulars:")[1].length < 40 ? item.title?.split("Circulars:")[1] : `${item.title?.split("Circulars:")[1].substring(0,40)}...`}</h3>
+                <div className="description" style={{
+                  height: "100%",
+                  width: "60%"
+                }}>
+                  <h4 style={{
+                    fontSize: "0.8rem"
+                  }}>
+                    {item.title?.split("Circulars:")[1].length < 40 ? item.title?.split("Circulars:")[1] : `${item.title?.split("Circulars:")[1].substring(0,40)}...`}</h4>
                   <p>{item.date}</p>
                   <div className="link">
-                    <button onClick={() => setDownloadPopup(item)}>
-                      Download <DownloadIcon />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )})}
-          </div>
-          <h3>Quality manuals</h3>
-          <div className="page-body quality-certificates">
-          {data?.map((item, index) => {
-              if(!item.title?.includes("Quality manuals:")) return null;
-              return(
-              <div key={index} className="box">
-                <div className="image-container">
-                  <img src={item.image} alt="cover" />
-                </div>
-                <div className="description">
-                  <h3>{item.title?.split("Quality manuals:")[1].length < 40 ? item.title?.split("Quality manuals:")[1] : `${item.title?.split("Quality manuals:")[1].substring(0,40)}...`}</h3>
-                  <p>{item.date}</p>
-                  <div className="link">
-                    <button onClick={() => setDownloadPopup(item)}>
+                    <button onClick={() => setDownloadPopup(item)} style={{
+                      // height: "2rem",
+                      // width: "3rem"
+                    }}>
                       Download <DownloadIcon />
                     </button>
                   </div>

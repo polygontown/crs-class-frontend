@@ -87,7 +87,7 @@ export default function Home(props) {
         </div>
         <div className="s-media">
           <a
-            href="https://www.facebook.com/profile.php?id=100083902624915"
+            href="https://www.facebook.com/crsclass"
             target="_blank"
             rel="noreferrer"
           >

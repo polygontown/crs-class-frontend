@@ -49,7 +49,11 @@ export default function Publications(props) {
       <div className="publications">
         <h1>PUBLICATIONS</h1>
         <div className="pub-body">
-          {data?.map((item, index) => (
+            <div className="left aside">
+            <h3>Circulars</h3>
+            {data?.map((item, index) => {
+              if(!item.title?.includes("Circulars:")) return null;
+              return(
             <div key={index} className="pub">
               <div className="image-container">
                 <img src={item.image} alt="cover" />
@@ -64,8 +68,31 @@ export default function Publications(props) {
                 </div>
               </div>
             </div>
-          ))}
-          <button onClick={() => navigate("/publications")}>more</button>
+          )})}
+          <button onClick={() => navigate("/publications/Circulars:")}>more</button>
+            </div>
+            <div className="right aside">
+            <h3>Quality manuals</h3>
+            {data?.map((item, index) => {
+              if(!item.title?.includes("Quality manuals:")) return null;
+              return(
+            <div key={index} className="pub">
+              <div className="image-container">
+                <img src={item.image} alt="cover" />
+              </div>
+              <div className="description-container">
+                <h3>{item.title.includes("Circulars") ? item.title.split("Circulars:") : item.title.split("Quality manuals:")}</h3>
+                <p>{item.date}</p>
+                <div className="button-container">
+                  <button onClick={() => setDownloadPopup(item)}>
+                    <FileDownloadIcon />
+                  </button>
+                </div>
+              </div>
+            </div>
+          )})}
+          <button onClick={() => navigate("/publications/Quality manuals:")}>more</button>
+            </div>
         </div>
       </div>
     </>
