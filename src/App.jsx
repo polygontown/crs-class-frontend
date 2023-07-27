@@ -26,6 +26,8 @@ import Contacts from "./components/pages/contacts";
 import CreateContact from "./components/pages/ccontact";
 import ChangePassword from "./components/pages/changePass";
 
+import Test from "./components/pdfviewer/test";
+
 import { AuthorizeAdmin, Authorize } from "./middleware/auth";
 
 export default function App() {
@@ -36,6 +38,10 @@ export default function App() {
     if(type === "Admin") editable = true;
     // console.log(window.location);
     const router = createBrowserRouter([
+        {
+            path: "/test",
+            element: <Test />
+        },
         {
             path: "/",
             element: <Main setPage={setPage} setScroll={setScroll} page={page} editable={editable}/>
