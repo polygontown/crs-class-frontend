@@ -14,7 +14,7 @@ export default function Test(props) {
         })
     });
     return(
-        <div style={{ height: "100%", width: "100%" }}>
+    <div style={{ height: "90%", backgroundColor: "blue" }}>
             { view ? <PdfViewerComponent file={view} /> : <button onClick={() => setView(true)}>View</button>}
         </div>
     );
