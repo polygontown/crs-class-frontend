@@ -4,7 +4,9 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DownloadIcon from "@mui/icons-material/Download";
 import CloseIcon from "@mui/icons-material/Close";
 import Popup from "react-animated-popup";
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
+import PdfPreview from "../pdfviewer/pdf";
 import "./style.scss";
 import loading from "../../assets/loading.gif";
 import Navigation from "../navigation";
@@ -14,6 +16,7 @@ export default function Publications(props) {
   const navigate = useNavigate();
   const { name } = useParams();
   const [downloadPopup, setDownloadPopup] = useState(false);
+  const [view,setView] = useState(false);
 
   const docs = useFetchDoc("/get-documents?dname=files&doc=0");
   const priDocs = useFetchDoc("/get-private-docs?dname=files&doc=0");
@@ -39,6 +42,7 @@ export default function Publications(props) {
 
   return (
     <>
+    {view && <PdfPreview view={view} setView={setView}/>}
       <Popup
         className="upload-popup"
         style={{ ...style, height: "12rem" }}
@@ -97,12 +101,15 @@ export default function Publications(props) {
                   }}>
                     {item.title?.split("Circulars:")[1].length < 40 ? item.title?.split("Circulars:")[1] : `${item.title?.split("Circulars:")[1].substring(0,40)}...`}</h4>
                   <p>{item.date}</p>
-                  <div className="link">
+                  <div className="link" style={{ gap: "1rem"}}>
                     <button onClick={() => setDownloadPopup(item)} style={{
                       // height: "2rem",
                       // width: "3rem"
                     }}>
                       Download <DownloadIcon />
+                    </button>
+                    <button onClick={() => setView(item)} >
+                      view <VisibilityIcon />
                     </button>
                   </div>
                 </div>
@@ -133,6 +140,7 @@ const DocumentDownload = (props) => {
       const doc = apiData[0].document;
       const a = document.createElement("a");
       a.href = doc;
+      a.target = "_blank";
       a.download = props?.info?.title;
       a.click();
       props.setVisible(false);

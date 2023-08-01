@@ -13,6 +13,8 @@ import Career from "./components/career";
 import Contact from  "./components/contact";
 import Login from "./components/login";
 
+import Footer from "./components/footer/footer";
+
 import Services from "./components/pages/services";
 import Blogs from "./components/pages/blogs";
 import Publications from "./components/pages/publications";
@@ -26,8 +28,6 @@ import Contacts from "./components/pages/contacts";
 import CreateContact from "./components/pages/ccontact";
 import ChangePassword from "./components/pages/changePass";
 
-import Test from "./components/pdfviewer/test";
-
 import { AuthorizeAdmin, Authorize } from "./middleware/auth";
 
 export default function App() {
@@ -39,8 +39,8 @@ export default function App() {
     // console.log(window.location);
     const router = createBrowserRouter([
         {
-            path: "/test",
-            element: <Test />
+            path: "/footer",
+            element: <Footer />
         },
         {
             path: "/",

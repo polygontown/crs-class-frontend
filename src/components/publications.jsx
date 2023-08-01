@@ -3,14 +3,17 @@ import { useNavigate } from "react-router-dom";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import CloseIcon from "@mui/icons-material/Close";
 import Popup from "react-animated-popup";
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import "./style.scss";
 import { useFetchDoc } from "../hooks/fetch.hook";
+import PdfPreview from "./pdfviewer/pdf";
 
 export default function Publications(props) {
   const docs = useFetchDoc("/get-documents?dname=files&limit=4&doc=0");
   const priDocs = useFetchDoc("/get-private-docs?dname=files&limit=4&doc=0");
   const [downloadPopup, setDownloadPopup] = useState(false);
+  const [view, setView] = useState(false);
   const navigate = useNavigate();
 
   let data;
@@ -32,6 +35,7 @@ export default function Publications(props) {
 
   return (
     <>
+      {view && <PdfPreview view={view} setView={setView} />}
       <Popup
         className="upload-popup"
         style={{ ...style, height: "12rem" }}
@@ -49,50 +53,58 @@ export default function Publications(props) {
       <div className="publications">
         <h1>PUBLICATIONS</h1>
         <div className="pub-body">
-            <div className="left aside">
+          <div className="left aside">
             <h3>Circulars</h3>
             {data?.map((item, index) => {
-              if(!item.title?.includes("Circulars:")) return null;
-              return(
-            <div key={index} className="pub">
-              <div className="image-container">
-                <img src={item.image} alt="cover" />
-              </div>
-              <div className="description-container">
-                <h3>{item.title.includes("Circulars") ? item.title.split("Circulars:") : item.title.split("Quality manuals:")}</h3>
-                <p>{item.date}</p>
-                <div className="button-container">
-                  <button onClick={() => setDownloadPopup(item)}>
-                    <FileDownloadIcon />
-                  </button>
+              if (!item.title?.includes("Circulars:")) return null;
+              return (
+                <div key={index} className="pub">
+                  <div className="image-container">
+                    <img src={item.image} alt="cover" />
+                  </div>
+                  <div className="description-container">
+                    <h3>{item.title.includes("Circulars") ? item.title.split("Circulars:") : item.title.split("Quality manuals:")}</h3>
+                    <p>{item.date}</p>
+                    <div className="button-container">
+                      <button onClick={() => setDownloadPopup(item)}>
+                        <FileDownloadIcon />
+                      </button>
+                      <button onClick={() => setView(item)} >
+                        <VisibilityIcon />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          )})}
-          <button onClick={() => navigate("/publications/Circulars:")}>more</button>
-            </div>
-            <div className="right aside">
+              )
+            })}
+            <button onClick={() => navigate("/publications/Circulars:")}>more</button>
+          </div>
+          <div className="right aside">
             <h3>Quality manuals</h3>
             {data?.map((item, index) => {
-              if(!item.title?.includes("Quality manuals:")) return null;
-              return(
-            <div key={index} className="pub">
-              <div className="image-container">
-                <img src={item.image} alt="cover" />
-              </div>
-              <div className="description-container">
-                <h3>{item.title.includes("Circulars") ? item.title.split("Circulars:") : item.title.split("Quality manuals:")}</h3>
-                <p>{item.date}</p>
-                <div className="button-container">
-                  <button onClick={() => setDownloadPopup(item)}>
-                    <FileDownloadIcon />
-                  </button>
+              if (!item.title?.includes("Quality manuals:")) return null;
+              return (
+                <div key={index} className="pub">
+                  <div className="image-container">
+                    <img src={item.image} alt="cover" />
+                  </div>
+                  <div className="description-container">
+                    <h3>{item.title.includes("Circulars") ? item.title.split("Circulars:") : item.title.split("Quality manuals:")}</h3>
+                    <p>{item.date}</p>
+                    <div className="button-container">
+                      <button onClick={() => setDownloadPopup(item)}>
+                        <FileDownloadIcon />
+                      </button>
+                      <button onClick={() => setView(item)} >
+                        <VisibilityIcon />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          )})}
-          <button onClick={() => navigate("/publications/Quality manuals:")}>more</button>
-            </div>
+              )
+            })}
+            <button onClick={() => navigate("/publications/Quality manuals:")}>more</button>
+          </div>
         </div>
       </div>
     </>

@@ -7,6 +7,8 @@ import { Toaster } from "react-hot-toast";
 import CloseIcon from "@mui/icons-material/Close";
 import LogoutIcon from "@mui/icons-material/Logout";
 import KeyIcon from '@mui/icons-material/Key';
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
 import logo from "../assets/logo.svg";
 import avatar from "../assets/avatar.jpg";
@@ -91,6 +93,24 @@ export default function Navigation(props) {
             <span>CAPITAL REGISTER OF</span>
             <span id="bold">SHIPPING</span>
           </div>
+        </div>
+        <div className="navItem">
+        <div className="s-media" style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+          <a
+            href="https://www.facebook.com/crsclass"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FacebookIcon sx={{ fontSize: "2.2rem", color: "#4267B2" }} />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/crsclass/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <LinkedInIcon sx={{ fontSize: "2.2rem", color: "#0077b5" }} />
+          </a>
+        </div>
         </div>
         <div onClick={() => scroll(1)} className="navItem">
           ABOUT

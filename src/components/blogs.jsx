@@ -28,7 +28,17 @@ export default function Blogs(props) {
           </div>
         ))}
       </div>
-      <div onClick={() => navigate("/blogs")} className="more">
+      <div onClick={() => navigate("/blogs")} className="more" style={{
+        display: "flex",
+        height: "3rem",
+        width: "8rem",
+        borderRadius: "0.5rem",
+        color: "black",
+        boxShadow: "0 0 10px black",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#ffffffcc"
+      }}>
         {"more"}
       </div>
     </div>

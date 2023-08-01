@@ -1132,6 +1132,7 @@ const DocumentDownload = (props) => {
       const doc = apiData[0].document;
       const a = document.createElement("a");
       a.href = doc;
+      a.target = "_blank";
       a.download = props?.info?.title;
       a.click();
       props.setVisible(false);

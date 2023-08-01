@@ -33,7 +33,9 @@ export default function Careers(props) {
             </div>
             <h2>ALL CAREER OPPRTUNITIES</h2>
           </div>
-          <div className="page-body">
+          <div className="page-body" style={{
+            paddingTop: "4rem"
+          }}>
             {apiData?.map((item, index) => (
               <div key={index} className="box">
                 <div className="image-container">

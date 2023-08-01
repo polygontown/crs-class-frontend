@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import FacebookIcon from "@mui/icons-material/Facebook";
+
 
 import "./style.scss";
 import loading from "../assets/loading.gif";
@@ -29,11 +28,6 @@ export default function Home(props) {
       }
     }, 4000);
   });
-  const style = {
-    borderRadius: "1rem",
-    backgroundColor: "#777777",
-    color: "white",
-  };
   return (
     <div className="home-container">
       {isLoading ? (
@@ -69,7 +63,7 @@ export default function Home(props) {
         </div>
       )}
       <div className="cover">
-        <div className="buttons-container">
+        {/* <div className="buttons-container">
           <a
             href="https://crsclass-esims.floatsys.com/CRSClass/Account/Signin.aspx"
             target="_blank"
@@ -84,23 +78,7 @@ export default function Home(props) {
           >
             <button style={style}>Classification request</button>
           </a>
-        </div>
-        <div className="s-media">
-          <a
-            href="https://www.facebook.com/crsclass"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FacebookIcon sx={{ fontSize: "4rem", color: "#4267B2" }} />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/crsclass/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <LinkedInIcon sx={{ fontSize: "4rem", color: "#0077b5" }} />
-          </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );

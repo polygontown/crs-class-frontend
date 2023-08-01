@@ -8,6 +8,20 @@
   src: url(../assets/AGENCYB.TTF);
 }
 
+.vis-mis {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+
+  .vis {
+    width: 30%;
+
+  }
+  .mis {
+    width: 70%;
+  }
+}
+
 .background {
   position: absolute;
   height: 100vh;
@@ -935,6 +949,8 @@
       width: 100%;
       font-size: calc(1vh + 1vw);
       align-items: flex-start;
+      justify-content: flex-start;
+      overflow-y: auto;
     }
   }
 

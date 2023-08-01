@@ -7,9 +7,12 @@ const ExamplePDFViewer = (props) => {
     return (
         <PDFViewer
             document={{
-                url: props.file,
+                // url: props.file,
+                base64: props.file.split("base64,")[1],
             }}
             hideNavbar
+            scale={1}
+            page={1}
         />
     )
 }
