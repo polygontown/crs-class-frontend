@@ -40,7 +40,7 @@ export default function App() {
     const router = createBrowserRouter([
         {
             path: "/footer",
-            element: <Footer />
+            element: <Footer setScroll={setScroll} />
         },
         {
             path: "/",
@@ -147,6 +147,7 @@ export const Main = (props) => {
             <div className="Publications page"><Publication editable={props.editable} /></div>
             <div className="career page"><Career editable={props.editable} /></div>
             <div className="contact page"><Contact  editable={props.editable} /></div>
+            <div className="page" style={{ paddingTop: "5rem" }}><Footer setScroll={props.setScroll} /></div>
         </>
     );
 }

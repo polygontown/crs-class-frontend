@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import "./style.scss";
+import Footer from "../footer/footer";
 import Navigation from "../navigation";
 import loading from "../../assets/loading.gif";
 import { useFetchDoc } from "../../hooks/fetch.hook";
@@ -59,6 +60,7 @@ export default function Services(props) {
           </div>
         </div>
       )}
+      <Footer setScroll={props.setScroll} />
     </>
   );
 }

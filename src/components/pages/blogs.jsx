@@ -5,6 +5,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import "./style.scss";
 import loading from "../../assets/loading.gif";
 import Navigation from "../navigation";
+import Footer from "../footer/footer";
 import { useFetchDoc } from "../../hooks/fetch.hook";
 
 export default function Blogs(props) {
@@ -58,6 +59,7 @@ export default function Blogs(props) {
           </div>
         </div>
       )}
+      <Footer setScroll={props.setScroll} />
     </>
   );
 }

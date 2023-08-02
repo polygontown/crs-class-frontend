@@ -7,6 +7,7 @@ import Popup from "react-animated-popup";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import PdfPreview from "../pdfviewer/pdf";
+import Footer from "../footer/footer";
 import "./style.scss";
 import loading from "../../assets/loading.gif";
 import Navigation from "../navigation";
@@ -202,6 +203,7 @@ const DocumentDownload = (props) => {
           </button>
         </div>
       </div>
+      <Footer setScroll={props.setScroll} />
     </>
   );
 };
