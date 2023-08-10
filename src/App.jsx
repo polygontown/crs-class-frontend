@@ -27,6 +27,7 @@ import View from "./components/pages/view";
 import Contacts from "./components/pages/contacts";
 import CreateContact from "./components/pages/ccontact";
 import ChangePassword from "./components/pages/changePass";
+import Privacypolicy from "./components/tandc/privacypolicy";
 
 import { AuthorizeAdmin, Authorize } from "./middleware/auth";
 
@@ -38,6 +39,10 @@ export default function App() {
     if(type === "Admin") editable = true;
     // console.log(window.location);
     const router = createBrowserRouter([
+        {
+            path: "/privacy-policy",
+            element: <Privacypolicy />
+        },
         {
             path: "/footer",
             element: <Footer setScroll={setScroll} />
