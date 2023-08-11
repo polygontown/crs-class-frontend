@@ -28,6 +28,7 @@ import Contacts from "./components/pages/contacts";
 import CreateContact from "./components/pages/ccontact";
 import ChangePassword from "./components/pages/changePass";
 import Privacypolicy from "./components/tandc/privacypolicy";
+import TextEditor from "./components/text-editor/text-editor";
 
 import { AuthorizeAdmin, Authorize } from "./middleware/auth";
 
@@ -46,6 +47,10 @@ export default function App() {
         {
             path: "/footer",
             element: <Footer setScroll={setScroll} />
+        },
+        {
+            path: "/te",
+            element: <TextEditor />
         },
         {
             path: "/",

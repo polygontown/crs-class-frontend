@@ -35,7 +35,7 @@ export default function Privacypolicy(props) {
                     </div>
                 ) : (
                     <div className="pp-body">
-
+                        { apiData?.content }
                     </div>
                 )}
             </div>
