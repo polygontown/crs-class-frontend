@@ -32,7 +32,9 @@ export default function View(props) {
       <div className="menu-bar">
         <div className="logo">
           <img src={logo} alt="logo" style={{ backgroundColor: "white" }} />
-          <div className="headding">
+          <div className="headding" style={{
+            color: "white"
+          }}>
             <span>CAPITAL REGISTER OF</span>
             <span id="bold">SHIPPING</span>
           </div>
@@ -57,8 +59,8 @@ export default function View(props) {
             <div className="assets-body">
               <h1 className="view-title">{apiData && apiData[0]?.title}</h1>
               <p className="view-date">{apiData && apiData[0]?.date}</p>
-              <p className="view-description">
-                {apiData && apiData[0]?.document}
+              <p className="view-description" dangerouslySetInnerHTML={{ __html: apiData && apiData[0]?.document }}>
+                {/* {apiData && apiData[0]?.document} */}
               </p>
             </div>
           </div>

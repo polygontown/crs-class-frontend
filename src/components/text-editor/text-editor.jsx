@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { EditorState, convertToRaw } from 'draft-js';
+import React, { useState, useEffect, useMemo } from 'react';
+import { EditorState, convertToRaw, ContentState, convertFromHTML } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
@@ -8,10 +8,15 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import "./style.scss";
 
 export default function TextEditor(props) {
+    console.log(props.data);
     const [state, setState] = useState({
-        editorState: EditorState.createEmpty()
+        editorState: EditorState.createWithContent(
+            ContentState.createFromBlockArray(
+                convertFromHTML("")
+            )
+        ),
     });
-    const [data, setData] = useState("");
+    // const [data, setData] = useState("");
     const onEditorStateChange = (editorState) => {
         setState({
             editorState,
@@ -19,9 +24,18 @@ export default function TextEditor(props) {
     };
     const { editorState } = state;
     useEffect(() => {
-        setData(draftToHtml(convertToRaw(editorState.getCurrentContent())));
-        console.log(data);
-    },[editorState,data]);
+        props.setData(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+        // console.log(htmlToDraft(data));
+    }, [editorState, props, props.data]);
+    useMemo(() => {
+        setState({
+            editorState: EditorState.createWithContent(
+                ContentState.createFromBlockArray(
+                    convertFromHTML(props.initial)
+                )
+            ),
+        });
+    },[props.initial]);
     return (
         <div className="text-editor">
             <Editor

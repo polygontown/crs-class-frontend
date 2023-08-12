@@ -13,11 +13,13 @@ import coverImg from "../../assets/cover.png";
 import { convertToBase64 } from "../../helper/convert";
 import { setDocument, updateDocument } from "../../helper/helper";
 import { useFetchDoc } from "../../hooks/fetch.hook";
+import TextEditor from "../text-editor/text-editor";
 
 export default function Create(props) {
   const { create, docId } = useParams();
 
   const [cover, setCover] = useState(null);
+  const [doc, setDoc] = useState("");
   const navigate = useNavigate();
 
   const [{ isLoading, apiData }] = useFetchDoc(
@@ -42,7 +44,7 @@ export default function Create(props) {
     validateOnChange: false,
     onSubmit: async (values) => {
       const title = document.getElementById("manage-title").value;
-      const doc = document.getElementById("manage-document").value;
+      // const doc = document.getElementById("manage-document").value;
       if (!title) return toast.error("Title cannot be empty");
       if (!doc) return toast.error("Document cannot be empty");
       values = await Object.assign(values, {
@@ -81,7 +83,8 @@ export default function Create(props) {
   useEffect(() => {
     if (apiData) {
       document.getElementById("manage-title").value = apiData[0]?.title;
-      document.getElementById("manage-document").value = apiData[0].document;
+      // document.getElementById("manage-document").value = apiData[0]?.document;
+      setDoc(apiData[0]?.document);
     }
   }, [apiData]);
 
@@ -146,11 +149,12 @@ export default function Create(props) {
                 <input id="manage-title" type="text" />
               </div>
               <div className="asset-body-two">
-                <label htmlFor="description">Description:</label>
-                <textarea
+                {/* <label htmlFor="description">Description:</label> */}
+                {/* <textarea
                   name="manage-document"
                   id="manage-document"
-                ></textarea>
+                ></textarea> */}
+                <TextEditor data={doc} initial={apiData ? apiData[0]?.document : ""} setData={setDoc} />
               </div>
               <div className="asset-body-three">
                 <button type="submit">{props.edit ? "Update" : "Post"}</button>

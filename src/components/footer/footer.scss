@@ -1,5 +1,5 @@
 .footer {
-  height: 80%;
+  height: 100%;
   width: 100%;
   padding: 0;
   background-color: #116;
@@ -81,6 +81,9 @@
   }
 
   .bottom {
+    height: 50%;
+    width: 100%;
+    
     .tandc {
       display: flex;
       height: 100%;

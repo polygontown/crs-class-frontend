@@ -28,7 +28,6 @@ import Contacts from "./components/pages/contacts";
 import CreateContact from "./components/pages/ccontact";
 import ChangePassword from "./components/pages/changePass";
 import Privacypolicy from "./components/tandc/privacypolicy";
-import TextEditor from "./components/text-editor/text-editor";
 
 import { AuthorizeAdmin, Authorize } from "./middleware/auth";
 
@@ -47,10 +46,6 @@ export default function App() {
         {
             path: "/footer",
             element: <Footer setScroll={setScroll} />
-        },
-        {
-            path: "/te",
-            element: <TextEditor />
         },
         {
             path: "/",
@@ -156,8 +151,15 @@ export const Main = (props) => {
             <div className="blog page"><Blog editable={props.editable} /></div>
             <div className="Publications page"><Publication editable={props.editable} /></div>
             <div className="career page"><Career editable={props.editable} /></div>
-            <div className="contact page"><Contact  editable={props.editable} /></div>
-            <div className="page" style={{ paddingTop: "5rem" }}><Footer setScroll={props.setScroll} /></div>
+            <div className="contact page" style={{
+                // height: "90vh"
+            }}><Contact  editable={props.editable} /></div>
+            <div className="page" style={{
+                paddingTop: "5rem",
+                // height: "10vh"
+                }}>
+                    <Footer setScroll={props.setScroll} />
+                </div>
         </>
     );
 }

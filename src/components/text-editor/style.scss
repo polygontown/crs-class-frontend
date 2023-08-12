@@ -1,18 +1,66 @@
-.text-editor {
-    height: 50%;
-    width: 100%;
-    
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bolder;
 }
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em
+}
+
+h3 {
+    font-size: 1.17em
+}
+
+h4 {
+    font-size: 1em;
+}
+
+h5 {
+    font-size: 0.83em
+}
+
+h6 {
+    font-size: .67em
+}
+
+.text-editor {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+
+.text-editor * {
+    line-height: 0;
+} 
+
 .demo-wrapper {
     height: 100%;
     width: 100%;
+    overflow-y: scroll;
 }
+
 // .demo-wrapper > *, .demo-wrapper > * > * {
 //     display: flex;
 //     justify-content: space-between;
 // }
 
-.demo-editor  {
-    height: 100%;
+.demo-editor {
+    height: calc(100% - 3rem);
     width: 100%;
+}
+
+.view-description * {
+    line-height: 0;
+    padding: 0;
+}
+.headding {
+    color: white;
 }

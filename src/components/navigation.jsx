@@ -46,7 +46,7 @@ export default function Navigation(props) {
       if (window.innerWidth < 750)
         document.getElementById("nav").style.transform = "translateY(-100%)";
       const sh = document.getElementsByClassName("App")[0].scrollHeight;
-      props.setScroll((sh / 7) * e + 20);
+      props.setScroll((sh / 8) * e + 20);
     }, 100);
   };
 
