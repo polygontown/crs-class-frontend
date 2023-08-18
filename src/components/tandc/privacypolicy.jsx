@@ -6,10 +6,11 @@ import "./style.scss";
 import { useFetchContent } from "../../hooks/fetch.hook";
 import logo from "../../assets/logo.svg";
 import loading from "../../assets/loading.gif";
+import Footer from "../footer/footer";
 
 export default function Privacypolicy(props) {
     const navigate = useNavigate();
-    const [{ isLoading, apiData }] = useFetchContent("About-des");
+    const [{ isLoading, apiData }] = useFetchContent("pp-des");
     return (
         <>
             <button onClick={() => navigate(-1)} className="universal-back-button">
@@ -41,6 +42,7 @@ export default function Privacypolicy(props) {
                     </div>
                 )}
             </div>
+            <Footer setScroll={props.setScroll} />
         </>
     );
 }

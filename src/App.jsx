@@ -50,11 +50,11 @@ export default function App() {
         },
         {
             path: "/privacy-policy",
-            element: <Privacypolicy />
+            element: <Privacypolicy setScroll={setScroll}/>
         },
         {
             path: "/terms-of-use",
-            element: <Termsofuse />
+            element: <Termsofuse setScroll={setScroll}/>
         },
         {
             path: "/edit-about",

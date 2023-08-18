@@ -28,40 +28,28 @@ export default function EditTOU(props) {
         let res1, res2, res3;
         if (headding[0].apiData) {
             res1 = updateContent({
-                cname: "About-headding",
+                cname: "tou-headding",
                 content: document.getElementById("title").value,
             });
         } else {
             res1 = setContent({
-                cname: "About-headding",
+                cname: "tou-headding",
                 content: document.getElementById("title").value,
             });
         }
         if (description[0].apiData) {
             res2 = updateContent({
-                cname: "About-des",
+                cname: "tou-des",
                 content: document.getElementById("des").value,
             });
         } else {
             res2 = setContent({
-                cname: "About-des",
+                cname: "tou-des",
                 content: document.getElementById("des").value,
             });
         }
 
-        if (abtImg[0].apiData) {
-            res3 = updateContent({
-                cname: "About-img",
-                content: img || (abtImg && abtImg[0]?.apiData?.content) || "",
-            });
-        } else {
-            res3 = setContent({
-                cname: "About-img",
-                content: img || (abtImg && abtImg[0]?.apiData?.content) || "",
-            });
-        }
-
-        const res = Promise.all([res1, res2, res3]);
+        const res = Promise.all([res1, res2]);
         toast.promise(res, {
             loading: "Creating...",
             success: <b>Created successfully...!</b>,
@@ -102,7 +90,7 @@ export default function EditTOU(props) {
                     </div>
                 ) : (
                     <div className="inner">
-                        <h2>EDIT ABOUT</h2>
+                        <h2>EDIT TERMS OF USE</h2>
                         <form onSubmit={submitHandler}>
                             <label htmlFor="about-image" id="ll" style={{ display: "none" }}>
                                 <img
@@ -111,12 +99,12 @@ export default function EditTOU(props) {
                                 />
                             </label>
                             <input onChange={onUpload} type="file" id="about-image" />
-                            <label htmlFor="title" id="lb">
+                            <label htmlFor="title" id="lb" style={{ display: "none" }}>
                                 ABOUT TITLE:
                             </label>
-                            <input type="text" id="title" />
+                            <input type="text" id="title" style={{ display: "none" }} />
                             <label htmlFor="des" id="lb">
-                                ABOUT DESCRIPTION:
+                                TERMS OF USE:
                             </label>
                             <textarea id="des"></textarea>
                             <button type="submit">UPDATE</button>
