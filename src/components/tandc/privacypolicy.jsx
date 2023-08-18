@@ -1,16 +1,15 @@
 import React from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
-import { useFetchContent } from "../../hooks/fetch.hook";
 
 import "./style.scss";
+import { useFetchContent } from "../../hooks/fetch.hook";
 import logo from "../../assets/logo.svg";
 import loading from "../../assets/loading.gif";
 
 export default function Privacypolicy(props) {
     const navigate = useNavigate();
     const [{ isLoading, apiData }] = useFetchContent("About-des");
-    console.log(apiData);
     return (
         <>
             <button onClick={() => navigate(-1)} className="universal-back-button">
@@ -34,8 +33,11 @@ export default function Privacypolicy(props) {
                         </div>
                     </div>
                 ) : (
-                    <div className="pp-body">
-                        { apiData?.content }
+                    <div className="pp-border">
+                        <div className="pp-body">
+                            <h2>Privacy policy</h2>
+                            {apiData?.content}
+                        </div>
                     </div>
                 )}
             </div>

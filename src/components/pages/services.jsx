@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
@@ -14,7 +14,9 @@ export default function Services(props) {
   );
   // console.log(apiData);
   const navigate = useNavigate();
-
+  useEffect(() => {
+    document.getElementsByClassName("App")[0].scrollTo(0,0);
+  });
   return (
     <>
       <div className="navigation">

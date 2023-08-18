@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import "./style.scss";
@@ -13,7 +13,9 @@ export default function Careers(props) {
     `/get-documents?dname=careers&doc=0`
   );
   const navigate = useNavigate();
-
+  useEffect(() => {
+    document.getElementsByClassName("App")[0].scrollTo(0,0);
+  });
   return (
     <>
       <div className="navigation">

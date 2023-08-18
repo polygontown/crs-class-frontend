@@ -16,7 +16,7 @@ export default function Footer(props) {
             if (window.innerWidth < 750)
                 document.getElementById("nav").style.transform = "translateY(-100%)";
             const sh = document.getElementsByClassName("App")[0].scrollHeight;
-            props.setScroll((sh / 8) * e + 20);
+            props.setScroll((sh / 7) * e + 20);
         }, 100);
     };
     return (
@@ -76,8 +76,8 @@ export default function Footer(props) {
                 padding: "2rem"
             }}>
                 <div className="tandc">
-                    <div>Terms of use</div>
-                    <div className="last">Privacy policy</div>
+                    <div onClick={() => navigate("/terms-of-use")}>Terms of use</div>
+                    <div className="last" onClick={() => navigate("/privacy-policy")}>Privacy policy</div>
                 </div>
                 <div className="add">
                     <div>

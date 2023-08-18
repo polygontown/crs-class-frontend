@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
@@ -10,9 +10,6 @@ export default function Services(props) {
     "/get-documents?dname=services&limit=3&doc=0"
   );
   const navigate = useNavigate();
-  useEffect(() => {
-    document.getElementsByClassName("App")[0].scrollTo(0,0);
-  });
   return (
     <div className="services">
       <h2>SERVICES</h2>

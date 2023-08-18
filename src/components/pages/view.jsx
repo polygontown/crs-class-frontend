@@ -7,6 +7,7 @@ import "./style.scss";
 import logo from "../../assets/logo.svg";
 import loading from "../../assets/loading.gif";
 import coverImg from "../../assets/cover.png";
+import Footer from "../footer/footer";
 import { useFetchDoc } from "../../hooks/fetch.hook";
 
 export default function View(props) {
@@ -22,6 +23,7 @@ export default function View(props) {
   };
   useEffect(() => {
     document.getElementsByClassName("App")[0].classList.remove("App-scrl");
+    document.getElementsByClassName("App")[0].scrollTo(0, 0);
   });
   return (
     <>
@@ -66,6 +68,7 @@ export default function View(props) {
           </div>
         )}
       </div>
+      <Footer setScroll={props.setScroll} />
     </>
   );
 }

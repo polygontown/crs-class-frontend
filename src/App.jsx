@@ -10,7 +10,7 @@ import Service from "./components/services";
 import Blog from "./components/blogs";
 import Publication from "./components/publications";
 import Career from "./components/career";
-import Contact from  "./components/contact";
+import Contact from "./components/contact";
 import Login from "./components/login";
 
 import Footer from "./components/footer/footer";
@@ -21,13 +21,17 @@ import Publications from "./components/pages/publications";
 import Careers from "./components/pages/careers";
 import Editor from "./components/pages/docEditor";
 import Admin from "./components/pages/admin";
-import Manage from "./components/pages/manage";   
+import Manage from "./components/pages/manage";
 import Create from "./components/pages/create";
 import View from "./components/pages/view";
 import Contacts from "./components/pages/contacts";
 import CreateContact from "./components/pages/ccontact";
 import ChangePassword from "./components/pages/changePass";
 import Privacypolicy from "./components/tandc/privacypolicy";
+import Termsofuse from "./components/tandc/termsofuse";
+import EditAbout from "./components/edit-website/edit-about";
+import EditPP from "./components/edit-website/edit-privacy-policy";
+import EditTOU from "./components/edit-website/edit-terms-of-use";
 
 import { AuthorizeAdmin, Authorize } from "./middleware/auth";
 
@@ -36,40 +40,53 @@ export default function App() {
     const [scroll, setScroll] = useState(0);
     const type = localStorage.getItem("type");
     let editable = false;
-    if(type === "Admin") editable = true;
+    if (type === "Admin") editable = true;
     // console.log(window.location);
     const router = createBrowserRouter([
+        
+        {
+            path: "/",
+            element: <Main setPage={setPage} setScroll={setScroll} page={page} editable={editable} />
+        },
         {
             path: "/privacy-policy",
             element: <Privacypolicy />
         },
         {
-            path: "/footer",
-            element: <Footer setScroll={setScroll} />
+            path: "/terms-of-use",
+            element: <Termsofuse />
         },
         {
-            path: "/",
-            element: <Main setPage={setPage} setScroll={setScroll} page={page} editable={editable}/>
+            path: "/edit-about",
+            element: <AuthorizeAdmin><EditAbout /></AuthorizeAdmin>
+        },
+        {
+            path: "/edit-privacy-policy",
+            element: <AuthorizeAdmin><EditPP /></AuthorizeAdmin>
+        },
+        {
+            path: "/edit-terms-of-use",
+            element: <AuthorizeAdmin><EditTOU /></AuthorizeAdmin>
         },
         {
             path: "/login",
-            element: <Login setPage={setPage} setScroll={setScroll} editable={editable}/>
+            element: <Login setPage={setPage} setScroll={setScroll} editable={editable} />
         },
         {
             path: "/services",
-            element: <Services setPage={setPage} setScroll={setScroll} editable={editable}/>
+            element: <Services setPage={setPage} setScroll={setScroll} editable={editable} />
         },
         {
             path: "/blogs",
-            element: <Blogs setPage={setPage} setScroll={setScroll} editable={editable}/>
+            element: <Blogs setPage={setPage} setScroll={setScroll} editable={editable} />
         },
         {
             path: "/publications/:name",
-            element: <Publications setPage={setPage} setScroll={setScroll} editable={editable}/>
+            element: <Publications setPage={setPage} setScroll={setScroll} editable={editable} />
         },
         {
             path: "/careers",
-            element: <Careers setPage={setPage} setScroll={setScroll} editable={editable}/>
+            element: <Careers setPage={setPage} setScroll={setScroll} editable={editable} />
         },
         {
             path: "doc-editor/:type",
@@ -88,8 +105,8 @@ export default function App() {
             element: <AuthorizeAdmin><Create /></AuthorizeAdmin>
         },
         {
-            path:"/edit/:create/:docId",
-            element: <AuthorizeAdmin><Create edit={true}/></AuthorizeAdmin>
+            path: "/edit/:create/:docId",
+            element: <AuthorizeAdmin><Create edit={true} /></AuthorizeAdmin>
         },
         {
             path: "/view/:type/:docId",
@@ -101,7 +118,7 @@ export default function App() {
         },
         {
             path: "/views-user/:type/:docId",
-            element: <View all={true}/>
+            element: <View all={true} />
         },
         {
             path: "/contacts-manager",
@@ -117,11 +134,11 @@ export default function App() {
         },
         {
             path: "/change-password",
-            element: <Authorize><ChangePassword ind={true}/></Authorize>
+            element: <Authorize><ChangePassword ind={true} /></Authorize>
         },
         {
             path: "/change-passwords",
-            element: <AuthorizeAdmin><ChangePassword/></AuthorizeAdmin>
+            element: <AuthorizeAdmin><ChangePassword /></AuthorizeAdmin>
         },
         {
             path: "*",
@@ -129,13 +146,13 @@ export default function App() {
         }
     ]);
     useEffect(() => {
-        document.getElementsByClassName("App")[0].scrollTo(0,scroll);
+        document.getElementsByClassName("App")[0].scrollTo(0, scroll);
     });
     return (
         <div className="App">
             <Background />
             {/* <div className="body scrollElement"> */}
-                <RouterProvider router={router}></RouterProvider>
+            <RouterProvider router={router}></RouterProvider>
             {/* </div> */}
         </div>
     );
@@ -144,7 +161,7 @@ export default function App() {
 export const Main = (props) => {
     return (
         <>
-        { !props.nav && <div className="navigation"><Navigation setPage={props.setPage} setScroll={props.setScroll}/></div>}
+            {!props.nav && <div className="navigation"><Navigation setPage={props.setPage} setScroll={props.setScroll} /></div>}
             <div className="home page"><Home editable={props.editable} /></div>
             <div className="about page"><About editable={props.editable} /></div>
             <div className="services page"><Service editable={props.editable} /></div>
@@ -152,14 +169,14 @@ export const Main = (props) => {
             <div className="Publications page"><Publication editable={props.editable} /></div>
             <div className="career page"><Career editable={props.editable} /></div>
             <div className="contact page" style={{
-                // height: "90vh"
-            }}><Contact  editable={props.editable} /></div>
-            <div className="page" style={{
+                 height: "70vh"
+            }}><Contact editable={props.editable} /></div>
+            <div className="pages" style={{
                 paddingTop: "5rem",
-                // height: "10vh"
-                }}>
-                    <Footer setScroll={props.setScroll} />
-                </div>
+                 height: "30vh"
+            }}>
+                <Footer setScroll={props.setScroll} />
+            </div>
         </>
     );
 }

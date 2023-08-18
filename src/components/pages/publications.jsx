@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DownloadIcon from "@mui/icons-material/Download";
@@ -40,7 +40,9 @@ export default function Publications(props) {
     width: "90%",
     boxShadow: "0 0 10px black ",
   };
-
+  useEffect(() => {
+    document.getElementsByClassName("App")[0].scrollTo(0,0);
+  });
   return (
     <>
     {view && <PdfPreview view={view} setView={setView}/>}
@@ -119,6 +121,7 @@ export default function Publications(props) {
           </div>
         </div>
       )}
+       <Footer setScroll={props.setScroll} />
     </>
   );
 }
@@ -203,7 +206,6 @@ const DocumentDownload = (props) => {
           </button>
         </div>
       </div>
-      <Footer setScroll={props.setScroll} />
     </>
   );
 };

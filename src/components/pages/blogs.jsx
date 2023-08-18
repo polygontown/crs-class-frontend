@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
@@ -13,7 +13,9 @@ export default function Blogs(props) {
     "/get-documents?dname=blogs&doc=0"
   );
   const navigate = useNavigate();
-
+  useEffect(() => {
+    document.getElementsByClassName("App")[0].scrollTo(0, 0);
+  });
   return (
     <>
       <div className="navigation">
@@ -22,7 +24,7 @@ export default function Blogs(props) {
       {isLoading ? (
         <div style={{ paddingTop: "6rem" }} className="loading">
           <div className="loading-body">
-            <img src={loading} alt="blogs"/>
+            <img src={loading} alt="blogs" />
           </div>
         </div>
       ) : (
@@ -34,17 +36,17 @@ export default function Blogs(props) {
             </div>
             <h2>ALL BLOGS</h2>
           </div>
-          <div className="page-body" style={{ paddingTop: "5rem"}}>
+          <div className="page-body" style={{ paddingTop: "5rem" }}>
             {apiData?.map((item, index) => (
               <div key={index} className="box">
                 <div className="image-container">
                   <img src={item.image} alt="cover" />
                 </div>
                 <div className="description">
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.date}</p>
-                </div>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.date}</p>
+                  </div>
                   <div className="link">
                     <Link
                       style={{ textDecoration: "none" }}
