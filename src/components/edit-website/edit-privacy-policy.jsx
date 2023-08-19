@@ -1,42 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 import { useFetchContent } from "../../hooks/fetch.hook";
-import { convertToBase64 } from "../../helper/convert";
 import logo from "../../assets/logo.svg";
 import loading from "../../assets/loading.gif";
 import { setContent, updateContent } from "../../helper/helper";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function EditPP(props) {
-    const [img, setImg] = useState(null);
-    const headding = useFetchContent("pp-headding");
     const description = useFetchContent("pp-des");
-    const abtImg = useFetchContent("pp-img");
 
     const navigate = useNavigate();
 
-    const isLoading = abtImg[0]?.isLoading;
-    const onUpload = async (e) => {
-        const base64 = await convertToBase64(e.target.files[0]);
-        setImg(base64);
-    };
+    const isLoading = description[0]?.isLoading;
     const submitHandler = (e) => {
         e.preventDefault();
 
-        let res1, res2;
-        if (headding[0].apiData) {
-            res1 = updateContent({
-                cname: "pp-headding",
-                content: document.getElementById("title").value,
-            });
-        } else {
-            res1 = setContent({
-                cname: "pp-headding",
-                content: document.getElementById("title").value,
-            });
-        }
+        let res2;
         if (description[0].apiData) {
             res2 = updateContent({
                 cname: "pp-des",
@@ -50,17 +31,19 @@ export default function EditPP(props) {
         }
 
 
-        const res = Promise.all([res1, res2]);
+        const res = Promise.all([res2]);
         toast.promise(res, {
             loading: "Creating...",
             success: <b>Created successfully...!</b>,
             error: <b>Could not create!</b>,
         });
+        res.then(() => {
+            navigate(-1);
+        });
     };
 
     useEffect(() => {
         if (!isLoading) {
-            document.getElementById("title").value = headding[0].apiData?.content;
             document.getElementById("des").value = description[0].apiData?.content;
         }
     });
@@ -93,17 +76,6 @@ export default function EditPP(props) {
                     <div className="inner">
                         <h2>EDIT PRIVACY POLICY</h2>
                         <form onSubmit={submitHandler}>
-                            <label htmlFor="about-image" id="ll" style={{ display: "none" }}>
-                                <img
-                                    src={img || (abtImg && abtImg[0]?.apiData?.content) || logo}
-                                    alt=""
-                                />
-                            </label>
-                            <input onChange={onUpload} type="file" id="about-image" />
-                            <label htmlFor="title" id="lb" style={{ display: "none" }}>
-                                ABOUT TITLE:
-                            </label>
-                            <input type="text" id="title" style={{ display: "none" }} />
                             <label htmlFor="des" id="lb">
                                 PRIVACY POLICY:
                             </label>

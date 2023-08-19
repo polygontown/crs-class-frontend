@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -19,6 +19,9 @@ export default function Footer(props) {
             props.setScroll((sh / 7) * e + 20);
         }, 100);
     };
+    useEffect(() => {
+        document.getElementsByClassName("App")[0].scrollTo(0,0);
+    })
     return (
         <div className="footer">
             <div className="top">

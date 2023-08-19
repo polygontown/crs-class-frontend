@@ -16,18 +16,13 @@ export default function View(props) {
   const [{ isLoading, apiData }] = useFetchDoc(
     `/get-documents?dname=${type}&docId=${docId}`
   );
-  const backButton = () => {
-    if (props.userView) return navigate(`/`, { replace: true });
-    if (props.all) return navigate(`/${type}`);
-    return navigate(`/manage/${type}`, { replace: true });
-  };
   useEffect(() => {
     document.getElementsByClassName("App")[0].classList.remove("App-scrl");
     document.getElementsByClassName("App")[0].scrollTo(0, 0);
   });
   return (
     <>
-      <button onClick={backButton} className="universal-back-button">
+      <button onClick={() => navigate(-1)} className="universal-back-button">
         <ArrowBackIcon sx={{ fontSize: "1rem" }} />
         Back
       </button>

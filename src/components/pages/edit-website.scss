@@ -1,0 +1,53 @@
+.edit-website-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    gap: 1rem;
+    .edit-website-top {
+        display: flex;
+        height: 3rem;
+        width: 100%;
+        border-radius: 1rem;
+        padding-inline: 1rem;
+        box-shadow: 0 0 10px black;
+        align-items: center;
+    }
+    .edit-website-items {
+        display: flex;
+        height: 2rem;
+        width: 100%;
+        padding: 0.25rem;
+        gap: 0.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 10px black;
+        align-items: center;
+        .sl-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            box-shadow: 0 0 10px inset black;
+        }
+        p {
+            padding-inline: 1rem;
+            flex: 1;
+        }
+        button {
+            height: 100%;
+            aspect-ratio: 2/1;
+            border-radius: 25% 25% / 50% 50%;
+            text-align: center;
+            box-shadow: 0 0 10px inset black;
+            border: none;
+        }
+        button:hover {
+            box-shadow: 0 0 10px black;
+        }
+    }
+}
+
+@media only screen and (max-width: 750px) {
+}

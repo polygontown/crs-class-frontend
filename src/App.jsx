@@ -32,6 +32,8 @@ import Termsofuse from "./components/tandc/termsofuse";
 import EditAbout from "./components/edit-website/edit-about";
 import EditPP from "./components/edit-website/edit-privacy-policy";
 import EditTOU from "./components/edit-website/edit-terms-of-use";
+import EditVision from "./components/vandm/edit-vision";
+import EditMission from "./components/vandm/edit-mission";
 
 import { AuthorizeAdmin, Authorize } from "./middleware/auth";
 
@@ -43,18 +45,18 @@ export default function App() {
     if (type === "Admin") editable = true;
     // console.log(window.location);
     const router = createBrowserRouter([
-        
+
         {
             path: "/",
             element: <Main setPage={setPage} setScroll={setScroll} page={page} editable={editable} />
         },
         {
             path: "/privacy-policy",
-            element: <Privacypolicy setScroll={setScroll}/>
+            element: <Privacypolicy setScroll={setScroll} />
         },
         {
             path: "/terms-of-use",
-            element: <Termsofuse setScroll={setScroll}/>
+            element: <Termsofuse setScroll={setScroll} />
         },
         {
             path: "/edit-about",
@@ -67,6 +69,14 @@ export default function App() {
         {
             path: "/edit-terms-of-use",
             element: <AuthorizeAdmin><EditTOU /></AuthorizeAdmin>
+        },
+        {
+            path: "/edit-vision",
+            element: <AuthorizeAdmin><EditVision /></AuthorizeAdmin>
+        },
+        {
+            path: "/edit-mission",
+            element: <AuthorizeAdmin><EditMission /></AuthorizeAdmin>
         },
         {
             path: "/login",
@@ -169,11 +179,14 @@ export const Main = (props) => {
             <div className="Publications page"><Publication editable={props.editable} /></div>
             <div className="career page"><Career editable={props.editable} /></div>
             <div className="contact page" style={{
-                 height: "70vh"
-            }}><Contact editable={props.editable} /></div>
+                height: "70vh"
+            }}>
+                <Contact editable={props.editable} />
+            </div>
             <div className="pages" style={{
-                paddingTop: "5rem",
-                 height: "30vh"
+                padding: 0,
+                height: "30vh",
+                backgroundColor: "red"
             }}>
                 <Footer setScroll={props.setScroll} />
             </div>

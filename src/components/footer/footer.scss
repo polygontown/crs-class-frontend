@@ -1,8 +1,9 @@
 .footer {
-  // height: attr("height");
+  height: clamp(16rem, 100%, 25rem);
   width: 100%;
   padding: 0;
   background-color: #116;
+  overflow: hidden;
 
   .top {
     display: flex;
@@ -92,6 +93,7 @@
       color: white;
       align-items: flex-end;
       justify-content: center;
+      cursor: pointer;
     }
 
     .tandc>* {
@@ -121,6 +123,7 @@
 
 @media only screen and (max-width: 750px) {
   .footer {
+    height: clamp(30rem, 50%, 40rem);
     .top {
       flex-direction: column;
       .logo {

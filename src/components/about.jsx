@@ -6,6 +6,8 @@ import "./style.scss";
 export default function About(props) {
   const title = useFetchContent("About-headding");
   const des = useFetchContent("About-des");
+  const vision = useFetchContent("vision-des");
+  const mission = useFetchContent("mission-des");
   // const style = styleConverter(apiData?.props);
   const style = {
     height: "100%",
@@ -68,13 +70,13 @@ export default function About(props) {
           <h2 style={{
             fontWeight: "bold"
           }}>Our Vision</h2>
-          <p>To become the classification Socity of 21<sup>st</sup> Century</p>
+          <p dangerouslySetInnerHTML={{ __html: vision[0]?.apiData?.content}}></p>
         </div>
         <div className="mis">
           <h2 style={{
             fontWeight: "bold"
           }}>Our Mission</h2>
-          <p>to redefine what it means to be a mirine classification socity in the 21<sup>st</sup>  century so that we can help modernize the marine industry</p>
+          <p dangerouslySetInnerHTML={{ __html: mission[0]?.apiData?.content}}></p>
         </div>
       </div>
     </div>

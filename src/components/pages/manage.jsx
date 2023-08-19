@@ -103,7 +103,7 @@ export default function Manage(props) {
             </div>
             {apiData?.map((item, index) => (
               <div key={index} className="item">
-                <div className="index">{index}</div>
+                <div className="index">{index + 1}</div>
                 <div className="inner one">
                   <h4>{item.title}</h4>
                   <p>{item.date}</p>

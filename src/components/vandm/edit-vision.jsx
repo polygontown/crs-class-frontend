@@ -8,8 +8,8 @@ import loading from "../../assets/loading.gif";
 import { setContent, updateContent } from "../../helper/helper";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-export default function EditTOU(props) {
-    const description = useFetchContent("tou-des");
+export default function EditVision(props) {
+    const description = useFetchContent("vision-des");
 
     const navigate = useNavigate();
 
@@ -17,18 +17,19 @@ export default function EditTOU(props) {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        let res2
+        let res2;
         if (description[0].apiData) {
             res2 = updateContent({
-                cname: "tou-des",
+                cname: "vision-des",
                 content: document.getElementById("des").value,
             });
         } else {
             res2 = setContent({
-                cname: "tou-des",
+                cname: "vision-des",
                 content: document.getElementById("des").value,
             });
         }
+
 
         const res = Promise.all([res2]);
         toast.promise(res, {
@@ -73,10 +74,10 @@ export default function EditTOU(props) {
                     </div>
                 ) : (
                     <div className="inner">
-                        <h2>EDIT TERMS OF USE</h2>
+                        <h2>EDIT PRIVACY POLICY</h2>
                         <form onSubmit={submitHandler}>
                             <label htmlFor="des" id="lb">
-                                TERMS OF USE:
+                                PRIVACY POLICY:
                             </label>
                             <textarea id="des"></textarea>
                             <button type="submit">UPDATE</button>

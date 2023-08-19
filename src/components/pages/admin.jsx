@@ -22,6 +22,7 @@ import KeyIcon from "@mui/icons-material/Key";
 import FolderIcon from '@mui/icons-material/Folder';
 
 import "./style.scss";
+import "./edit-website.scss";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.jpg";
 import docImg from "../../assets/document.jpg";
@@ -726,34 +727,35 @@ const UploadDocument = (props) => {
           </div>
           <div className="bottom">
             {documents?.map((doc, index) => {
-              if(!doc.title.includes(folder+":")) return null;
-              return(
-              <div key={index} className="document">
-                <div className="cover">
-                  <img src={doc.image || docImg} alt="" />
-                </div>
-                <div className="description">
-                  <div className="des-left">
-                    <p id="title">{doc.title.split(folder + ":")[1]}</p>
-                    <p id="date">{doc.date}</p>
+              if (!doc.title.includes(folder + ":")) return null;
+              return (
+                <div key={index} className="document">
+                  <div className="cover">
+                    <img src={doc.image || docImg} alt="" />
                   </div>
-                  <div className="des-right">
-                    <span onClick={() => Info(doc)}>
-                      <InfoIcon />
-                    </span>
-                    <span onClick={() => Edit(doc)}>
-                      <EditIcon />
-                    </span>
-                    <span onClick={() => Delete(doc)}>
-                      <DeleteIcon />
-                    </span>
-                    <span onClick={() => Download(doc)}>
-                      <FileDownload />
-                    </span>
+                  <div className="description">
+                    <div className="des-left">
+                      <p id="title">{doc.title.split(folder + ":")[1]}</p>
+                      <p id="date">{doc.date}</p>
+                    </div>
+                    <div className="des-right">
+                      <span onClick={() => Info(doc)}>
+                        <InfoIcon />
+                      </span>
+                      <span onClick={() => Edit(doc)}>
+                        <EditIcon />
+                      </span>
+                      <span onClick={() => Delete(doc)}>
+                        <DeleteIcon />
+                      </span>
+                      <span onClick={() => Download(doc)}>
+                        <FileDownload />
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )})}
+              )
+            })}
           </div>
         </div>)}
     </div>
@@ -761,7 +763,55 @@ const UploadDocument = (props) => {
 };
 
 const EditWebsite = (props) => {
- 
+  const navigate = useNavigate();
+  return (
+    <div className="upload-document-container">
+      <div className="upload-document-body">
+        <div className="edit-website-container">
+          <div className="edit-website-top">
+            <h4>Edit website content</h4>
+          </div>
+          <div className="edit-website-items">
+            <div className="sl-number">
+              1
+            </div>
+            <p>Edit about</p>
+            <button onClick={() => navigate("/edit-about")}>Edit</button>
+          </div>
+          <div className="edit-website-items">
+            <div className="sl-number">
+              2
+            </div>
+            <p>Edit Vision</p>
+            <button onClick={() => navigate("/edit-vision")}>Edit</button>
+          </div>
+          <div className="edit-website-items">
+            <div className="sl-number">
+              3
+            </div>
+            <p>Edit Mission</p>
+            <button onClick={() => navigate("/edit-mission")}>Edit</button>
+          </div>
+          <div className="edit-website-items">
+            <div className="sl-number">
+              4
+            </div>
+            <p>Edit Privacy policy</p>
+            <button onClick={() => navigate("/privacy-policy")}>View</button>
+            <button onClick={() => navigate("/edit-privacy-policy")}>Edit</button>
+          </div>
+          <div className="edit-website-items">
+            <div className="sl-number">
+              5
+            </div>
+            <p>Edit Terms of use</p>
+            <button onClick={() => navigate("/terms-of-use")}>View</button>
+            <button onClick={() => navigate("/edit-terms-of-use")}>Edit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 const DocumentInfo = (props) => {
