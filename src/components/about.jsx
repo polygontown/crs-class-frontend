@@ -59,24 +59,31 @@ export default function About(props) {
           {des && des[0]?.apiData?.content}
         </p>
       </div>
-      <div className="vis-mis" style={{
-        backgroundColor: "#ffffffdd",
-        borderRadius: "1rem",
-        padding: "0.5rem",
-        boxShadow: "0 0 10px black",
-        color: "black"
-      }}>
-        <div className="vis">
+      <div className="vis-mis">
+        <div className="vis" style={{
+          backgroundColor: "#ffffffdd",
+          borderRadius: "1rem",
+          padding: "0.5rem",
+          boxShadow: "0 0 10px black",
+          color: "black"
+        }}>
           <h2 style={{
             fontWeight: "bold"
           }}>Our Vision</h2>
-          <p dangerouslySetInnerHTML={{ __html: vision[0]?.apiData?.content}}></p>
+          <p dangerouslySetInnerHTML={{ __html: vision[0]?.apiData?.content }}></p>
         </div>
-        <div className="mis">
+        <div className="mis" style={{
+          backgroundColor: "#ffffffdd",
+          borderRadius: "1rem",
+          padding: "0.5rem",
+          boxShadow: "0 0 10px black",
+          color: "black",
+          marginLeft: "0.5rem"
+        }}>
           <h2 style={{
             fontWeight: "bold"
           }}>Our Mission</h2>
-          <p dangerouslySetInnerHTML={{ __html: mission[0]?.apiData?.content}}></p>
+          <p dangerouslySetInnerHTML={{ __html: mission[0]?.apiData?.content }}></p>
         </div>
       </div>
     </div>
