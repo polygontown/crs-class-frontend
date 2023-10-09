@@ -47,7 +47,6 @@ export default function Services(props) {
                 </div>
                 <div className="description">
                   <h3>{item.title}</h3>
-                  <p>{item.date}</p>
                   <div className="link">
                     <Link
                       style={{ textDecoration: "none" }}

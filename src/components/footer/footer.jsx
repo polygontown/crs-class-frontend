@@ -84,12 +84,13 @@ export default function Footer(props) {
                 </div>
                 <div className="add">
                     <div>
-                        Technical Office:A5,Heavenly Plaza
+                        <b>Technical Office:</b><br />
+                        A5,Heavenly Plaza
                         Civil Line Road,vazhakkala,Kochi
                         Ernakulam,Kerala,India 682030
                     </div>
                     <div>
-                        Corporate Office:
+                        <b>Corporate Office:</b><br />
                         25087 Westheimer Parkway
                         Katy,Texas 77494,USA
                     </div>

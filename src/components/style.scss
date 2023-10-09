@@ -246,6 +246,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100%;
   width: 100%;
   overflow: visible;
@@ -256,7 +257,7 @@
     display: flex;
     flex-direction: row;
     height: 100%;
-    width: 100%;
+    width: 80%;
     padding-top: 5rem;
     overflow-y: hidden;
     overflow-x: scroll;
@@ -373,11 +374,11 @@
 
     .service {
       display: flex;
-      flex: 1;
+      flex: 1 1 500px;
       flex-direction: column;
-      flex-shrink: 0;
+      flex-shrink: 1;
       height: 95%;
-      aspect-ratio: 1/1;
+      // aspect-ratio: 1/1;
       gap: 1rem;
       padding: 1rem;
       border-radius: 2rem;

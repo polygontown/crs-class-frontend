@@ -21,8 +21,7 @@ export default function Services(props) {
             </div>
             <div className="bottom">
               <div className="one">
-                <h1>{service.title}</h1>
-                <p>{service.date}</p>
+                <h3>{service.title}</h3>
               </div>
               <div className="two">
                 <button
