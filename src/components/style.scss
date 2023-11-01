@@ -11,14 +11,15 @@
 .vis-mis {
   display: flex;
   width: 100%;
-  flex-direction: row;
+  gap: 0.5rem;
+  flex-direction: column;
 
   .vis {
-    width: 30%;
+    width: 100%;
 
   }
   .mis {
-    width: 70%;
+    width: 100%;
   }
 }
 

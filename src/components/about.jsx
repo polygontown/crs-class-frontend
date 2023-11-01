@@ -77,8 +77,7 @@ export default function About(props) {
           borderRadius: "1rem",
           padding: "0.5rem",
           boxShadow: "0 0 10px black",
-          color: "black",
-          marginLeft: "0.5rem"
+          color: "black"
         }}>
           <h2 style={{
             fontWeight: "bold"
