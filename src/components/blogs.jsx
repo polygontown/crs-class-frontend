@@ -6,7 +6,7 @@ import "./style.scss";
 import { useFetchDoc } from "../hooks/fetch.hook";
 
 export default function Blogs(props) {
-  const [{ apiData }] = useFetchDoc("/get-documents?dname=blogs&limit=4&doc=0");
+  const [{ apiData }] = useFetchDoc("/get-documents?dname=blogs&limit=3&doc=0");
   const navigate = useNavigate();
   return (
     <div className="services">
