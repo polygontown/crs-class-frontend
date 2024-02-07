@@ -1810,6 +1810,8 @@
 
         input,
         #des,
+        #office-address-1,
+        #office-address-2,
         button {
             height: 3rem;
             width: 50%;
@@ -1822,6 +1824,8 @@
 
         input:focus,
         #des:focus,
+        #office-address-1:focus,
+        #office-address-2:focus,
         button:focus {
             outline: none;
             box-shadow: 0 0 10px blue;
@@ -1842,6 +1846,9 @@
             height: 30rem;
             font-size: 1rem;
         }
+        #office-address-1, #office-address-2 {
+            height: 15rem;
+        }
     }
 }
 
@@ -1859,6 +1866,8 @@
 
             input,
             #des,
+            #office-address-1,
+            #office-address-2,
             button {
                 width: 90%;
                 border-radius: 0.5rem;

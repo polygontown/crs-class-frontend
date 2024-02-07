@@ -808,6 +808,14 @@ const EditWebsite = (props) => {
             <button onClick={() => navigate("/terms-of-use")}>View</button>
             <button onClick={() => navigate("/edit-terms-of-use")}>Edit</button>
           </div>
+          <div className="edit-website-items">
+            <div className="sl-number">
+              5
+            </div>
+            <p>Edit office addresses</p>
+            {/* <button onClick={() => navigate("/terms-of-use")}>View</button> */}
+            <button onClick={() => navigate("/edit-addresses")}>Edit</button>
+          </div>
         </div>
       </div>
     </div>

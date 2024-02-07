@@ -25,7 +25,7 @@ export default function EditAbout(props) {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        let res1, res2, res3;
+        let res1, res2;
         if (headding[0].apiData) {
             res1 = updateContent({
                 cname: "About-headding",
@@ -49,19 +49,19 @@ export default function EditAbout(props) {
             });
         }
 
-        if (abtImg[0].apiData) {
-            res3 = updateContent({
-                cname: "About-img",
-                content: img || (abtImg && abtImg[0]?.apiData?.content) || "",
-            });
-        } else {
-            res3 = setContent({
-                cname: "About-img",
-                content: img || (abtImg && abtImg[0]?.apiData?.content) || "",
-            });
-        }
+        // if (abtImg[0].apiData) {
+        //     res3 = updateContent({
+        //         cname: "About-img",
+        //         content: img || (abtImg && abtImg[0]?.apiData?.content) || "",
+        //     });
+        // } else {
+        //     res3 = setContent({
+        //         cname: "About-img",
+        //         content: img || (abtImg && abtImg[0]?.apiData?.content) || "",
+        //     });
+        // }
 
-        const res = Promise.all([res1, res2, res3]);
+        const res = Promise.all([res1, res2]);
         toast.promise(res, {
             loading: "Creating...",
             success: <b>Created successfully...!</b>,

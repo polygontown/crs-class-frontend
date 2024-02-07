@@ -4,12 +4,15 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 
 import logo from "../../assets/logo.svg";
+import { useFetchContent } from "../../hooks/fetch.hook";
 
 import "./footer.scss";
 
 export default function Footer(props) {
  const navigate = useNavigate();
  const location = useLocation();
+ const address1 = useFetchContent("Office-address-1");
+ const address2 = useFetchContent("Office-address-2");
  const scroll = (e) => {
   if (location.pathname !== "/") navigate("/");
   setTimeout(() => {
@@ -85,14 +88,11 @@ export default function Footer(props) {
     <div className="add">
      <div>
       <b>Technical Office:</b><br />
-      NJRA 7,North Janatha Road
-      Palarivattom
-      Kochi,India 682025
+      {address1 && address1[0]?.apiData?.content}
      </div>
      <div>
       <b>Corporate Office:</b><br />
-      25087 Westheimer Parkway
-      Katy,Texas 77494,USA
+      {address2 && address2[0]?.apiData?.content}
      </div>
     </div>
    </div>

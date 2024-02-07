@@ -30,6 +30,7 @@ import ChangePassword from "./components/pages/changePass";
 import Privacypolicy from "./components/tandc/privacypolicy";
 import Termsofuse from "./components/tandc/termsofuse";
 import EditAbout from "./components/edit-website/edit-about";
+import EditAddresses from "./components/edit-website/address";
 import EditPP from "./components/edit-website/edit-privacy-policy";
 import EditTOU from "./components/edit-website/edit-terms-of-use";
 import EditVision from "./components/vandm/edit-vision";
@@ -61,6 +62,10 @@ export default function App() {
         {
             path: "/edit-about",
             element: <AuthorizeAdmin><EditAbout /></AuthorizeAdmin>
+        },
+        {
+            path: "/edit-addresses",
+            element: <AuthorizeAdmin><EditAddresses /></AuthorizeAdmin>
         },
         {
             path: "/edit-privacy-policy",
